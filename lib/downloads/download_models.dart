@@ -45,15 +45,15 @@ class DownloadProgress {
   double? get fraction => total == null || total == 0 ? null : (downloaded / total!).clamp(0.0, 1.0);
 
   static const progressTemplate =
-      'download:ytplus|%(progress.status)s|%(progress.downloaded_bytes)s|%(progress.total_bytes)s|%(progress.total_bytes_estimate)s|%(progress.speed)s|%(progress.eta)s';
+      'download:lumtub|%(progress.status)s|%(progress.downloaded_bytes)s|%(progress.total_bytes)s|%(progress.total_bytes_estimate)s|%(progress.speed)s|%(progress.eta)s';
 
   /// Prefix of the line that names the finished file.
-  static const filePrefix = 'ytplus-file|';
+  static const filePrefix = 'lumtub-file|';
   static const filePrint = 'after_move:$filePrefix%(filepath)s';
 
   /// The progress in [line], or null for any other output.
   static DownloadProgress? parse(String line) {
-    if (!line.startsWith('ytplus|')) return null;
+    if (!line.startsWith('lumtub|')) return null;
     final parts = line.trim().split('|');
     if (parts.length < 7) return null;
     num? number(String s) => s == 'NA' || s.isEmpty ? null : num.tryParse(s);

@@ -152,7 +152,7 @@ class VideoRepository {
     deno: deno,
     proxy: proxy,
     infoDirectory: Directory(cacheDirectory == null
-        ? '${Directory.systemTemp.path}${Platform.pathSeparator}ytplus-info'
+        ? '${Directory.systemTemp.path}${Platform.pathSeparator}lumtub-info'
         : '${cacheDirectory!}${Platform.pathSeparator}..${Platform.pathSeparator}temp${Platform.pathSeparator}info'),
     environment: _environment,
   );
@@ -253,7 +253,7 @@ class VideoRepository {
   /// nothing else in it, removed afterwards, so no visitor id is kept.
   Stream<String> _regionLines(String url, String region) async* {
     final directory = Directory(cacheDirectory == null
-        ? '${Directory.systemTemp.path}${Platform.pathSeparator}ytplus-region'
+        ? '${Directory.systemTemp.path}${Platform.pathSeparator}lumtub-region'
         : '${cacheDirectory!}${Platform.pathSeparator}..${Platform.pathSeparator}temp${Platform.pathSeparator}region');
     await directory.create(recursive: true);
     final file = File('${directory.path}${Platform.pathSeparator}${DateTime.now().microsecondsSinceEpoch}-${_cookieFiles++}.txt');

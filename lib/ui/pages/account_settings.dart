@@ -74,7 +74,7 @@ class AccountSettings extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.fromLTRB(18, 4, 18, 12),
         child: Text(
-          tr('登录完全可选，不登录也能正常搜索和播放。登录后读取订阅和播放列表并复制到本机；只有你在 YTPlus 里点赞、点踩、评论、保存到播放列表或订阅时才会修改账号，不会上传本机的观看记录。登录凭据用 Windows 数据保护加密后保存在本机，只有当前 Windows 用户能解密。\nYouTube 官方接口不提供观看历史和首页推荐，也不支持给社区帖子点赞或评论；首页的“为你推荐”在本机计算，会参考同步过来的喜欢的视频和订阅。视频播放不使用这个账号，会员或年龄限制视频不一定能播放。'),
+          tr('登录完全可选，不登录也能正常搜索和播放。登录后读取订阅和播放列表并复制到本机；只有你在 Lumtub 里点赞、点踩、评论、保存到播放列表或订阅时才会修改账号，不会上传本机的观看记录。登录凭据用 Windows 数据保护加密后保存在本机，只有当前 Windows 用户能解密。\nYouTube 官方接口不提供观看历史和首页推荐，也不支持给社区帖子点赞或评论；首页的“为你推荐”在本机计算，会参考同步过来的喜欢的视频和订阅。视频播放不使用这个账号，会员或年龄限制视频不一定能播放。'),
           style: note,
         ),
       ),
@@ -87,7 +87,7 @@ class AccountSettings extends StatelessWidget {
   Future<void> _confirmSignOut(BuildContext context, AccountController account) async {
     final confirmed = await showDialog<bool>(context: context, builder: (context) => AlertDialog(
       title: Text(tr('退出 Google 账号？')),
-      content: Text(tr('会删除本机保存的登录凭据，并通知 Google 撤销 YTPlus 的授权。已经导入的关注频道和播放列表会保留。')),
+      content: Text(tr('会删除本机保存的登录凭据，并通知 Google 撤销 Lumtub 的授权。已经导入的关注频道和播放列表会保留。')),
       actions: [
         TextButton(onPressed: () => Navigator.pop(context, false), child: Text(tr('取消'))),
         FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(tr('退出登录'))),

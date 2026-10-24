@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/thumbnail_trim.dart';
+import 'package:lumtub/thumbnail_trim.dart';
 
 void main() {
   late Directory dir;
@@ -15,7 +15,7 @@ void main() {
   }
 
   setUp(() async {
-    dir = await Directory.systemTemp.createTemp('ytplus-thumb-trim-');
+    dir = await Directory.systemTemp.createTemp('lumtub-thumb-trim-');
     addTearDown(() => dir.delete(recursive: true));
   });
 

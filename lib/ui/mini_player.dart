@@ -5,7 +5,7 @@
 //
 // PiliNara: https://github.com/Starfallan/PiliNara
 // Copyright (C) PiliNara contributors.
-// Adapted for YTPlus under the GNU General Public License, version 3 or
+// Adapted for Lumtub under the GNU General Public License, version 3 or
 // later. Changes: a widget in the shell's page area instead of a navigator
 // overlay entry; it shares the player's one VideoController with the watch
 // page, which is unmounted while the card shows.

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/native_core.dart';
+import 'package:lumtub/native_core.dart';
 
 Future<bool> _running(int pid) async {
   final out = await Process.run('tasklist', ['/FI', 'PID eq $pid', '/NH']);
@@ -25,7 +25,7 @@ void main() {
     await process.exitCode;
   });
 
-  // CI builds ytplus_core.dll first and points YTPLUS_CORE_DLL at it.
+  // CI builds lumtub_core.dll first and points LUMTUB_CORE_DLL at it.
   test('killing a tree ends the processes it started', () async {
     final process = await ProcessTree.start('powershell.exe', [
       '-NoProfile',
@@ -38,5 +38,5 @@ void main() {
     expect(process.kill(), isTrue);
     await process.exitCode;
     expect(await _goneSoon(grandchild), isTrue);
-  }, skip: NativeCore.instance == null ? 'ytplus_core.dll is not built' : null, timeout: const Timeout(Duration(seconds: 60)));
+  }, skip: NativeCore.instance == null ? 'lumtub_core.dll is not built' : null, timeout: const Timeout(Duration(seconds: 60)));
 }

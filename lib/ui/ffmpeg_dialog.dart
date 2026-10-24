@@ -60,8 +60,8 @@ class _FfmpegQuestionState extends State<_FfmpegQuestion> {
           builder: (context, snapshot) {
             final size = snapshot.data;
             return Text(size == null
-                ? tr('合并高画质视频和音频需要 ffmpeg，现在下载并安装（YTPlus 自建的 LGPL 精简版，经 SHA-256 校验）。')
-                : tr('合并高画质视频和音频需要 ffmpeg，现在下载并安装（下载约 {0}，YTPlus 自建的 LGPL 精简版，经 SHA-256 校验）。', [formatBytes(size)]));
+                ? tr('合并高画质视频和音频需要 ffmpeg，现在下载并安装（Lumtub 自建的 LGPL 精简版，经 SHA-256 校验）。')
+                : tr('合并高画质视频和音频需要 ffmpeg，现在下载并安装（下载约 {0}，Lumtub 自建的 LGPL 精简版，经 SHA-256 校验）。', [formatBytes(size)]));
           },
         ),
         const SizedBox(height: 8),

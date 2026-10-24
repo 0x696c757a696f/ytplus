@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:media_kit/media_kit.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/ui/pip_view.dart';
-import 'package:ytplus/ui/player_controls.dart';
-import 'package:ytplus/ui/theme.dart';
-import 'package:ytplus/widgets/video_progress_bar.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/ui/pip_view.dart';
+import 'package:lumtub/ui/player_controls.dart';
+import 'package:lumtub/ui/theme.dart';
+import 'package:lumtub/widgets/video_progress_bar.dart';
 
 /// A player without libmpv: state changes are pushed through the streams
 /// the controls listen to.

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app/home_feed.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/recommendations.dart';
-import 'package:ytplus/ui/pages/video_pages.dart';
-import 'package:ytplus/ui/video_card.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app/home_feed.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/recommendations.dart';
+import 'package:lumtub/ui/pages/video_pages.dart';
+import 'package:lumtub/ui/video_card.dart';
 
 void main() {
   testWidgets('home shows 为你推荐 with 换一批', (tester) async {

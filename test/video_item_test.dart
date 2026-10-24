@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/models.dart';
+import 'package:lumtub/models.dart';
 
 void main() {
   test('yt-dlp flat search entries become video cards', () {

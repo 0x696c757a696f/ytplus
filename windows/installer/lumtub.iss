@@ -1,5 +1,5 @@
-; Inno Setup script for the YTPlus installer, built by .github/workflows/build.yml:
-;   iscc /DAppVersion=0.1.0 /DSourceDir=<release folder> /DOutputDir=<folder> ytplus.iss
+; Inno Setup script for the Lumtub installer, built by .github/workflows/build.yml:
+;   iscc /DAppVersion=0.1.0 /DSourceDir=<release folder> /DOutputDir=<folder> lumtub.iss
 ; Installs for the current user only, so no administrator rights are needed,
 ; the same as the portable ZIP.
 
@@ -21,24 +21,25 @@
 
 [Setup]
 AppId={{6F1C2E9A-3B7D-4C55-9E2A-8D4F1A7B9C31}
-AppName=YTPlus
+AppName=Lumtub
 AppVersion={#AppVersion}
-AppVerName=YTPlus {#AppVersion}
-AppPublisher=YTPlus
-AppPublisherURL=https://github.com/0x696c757a696f/ytplus
-AppSupportURL=https://github.com/0x696c757a696f/ytplus/issues
-DefaultDirName={autopf}\YTPlus
-DefaultGroupName=YTPlus
+AppVerName=Lumtub {#AppVersion}
+AppPublisher=Lumtub
+AppPublisherURL=https://github.com/0x696c757a696f/lumtub
+AppSupportURL=https://github.com/0x696c757a696f/lumtub/issues
+DefaultDirName={autopf}\Lumtub
+DefaultGroupName=Lumtub
 DisableProgramGroupPage=yes
+UsePreviousGroup=no
 PrivilegesRequired=lowest
 ArchitecturesAllowed={#InstallArch}
 ArchitecturesInstallIn64BitMode={#InstallArch}
 MinVersion=10.0
 LicenseFile={#SourceDir}\LICENSE
 SetupIconFile=..\runner\resources\app_icon.ico
-UninstallDisplayIcon={app}\ytplus.exe
+UninstallDisplayIcon={app}\lumtub.exe
 OutputDir={#OutputDir}
-OutputBaseFilename=YTPlus_{#AppVersion}_windows-{#PackageArch}-setup
+OutputBaseFilename=Lumtub_{#AppVersion}_windows-{#PackageArch}-setup
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
@@ -57,14 +58,21 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "{#SourceDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
+[InstallDelete]
+; Left by versions released as YTPlus.
+Type: files; Name: "{app}\ytplus.exe"
+Type: files; Name: "{app}\ytplus_core.dll"
+Type: filesandordirs; Name: "{autoprograms}\YTPlus"
+Type: files; Name: "{autodesktop}\YTPlus.lnk"
+
 [Icons]
-Name: "{group}\YTPlus"; Filename: "{app}\ytplus.exe"
-Name: "{group}\{cm:UninstallProgram,YTPlus}"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\YTPlus"; Filename: "{app}\ytplus.exe"; Tasks: desktopicon
+Name: "{group}\Lumtub"; Filename: "{app}\lumtub.exe"
+Name: "{group}\{cm:UninstallProgram,Lumtub}"; Filename: "{uninstallexe}"
+Name: "{autodesktop}\Lumtub"; Filename: "{app}\lumtub.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\ytplus.exe"; Description: "{cm:LaunchProgram,YTPlus}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\lumtub.exe"; Description: "{cm:LaunchProgram,Lumtub}"; Flags: nowait postinstall skipifsilent
 
 ; Settings, history, the library and downloaded components live in
-; %LOCALAPPDATA%\YTPlus and are kept on uninstall, so reinstalling or
+; %LOCALAPPDATA%\Lumtub and are kept on uninstall, so reinstalling or
 ; switching to the portable ZIP keeps them.

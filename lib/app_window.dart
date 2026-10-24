@@ -70,7 +70,7 @@ class AppWindow {
 
   static int? _handle;
 
-  /// YTPlus's own top-level window: the runner's window class in this
+  /// Lumtub's own top-level window: the runner's window class in this
   /// process, so a second copy of the app is never moved.
   static int? get handle {
     if (_handle != null || _user32 == null) return _handle;
@@ -229,7 +229,7 @@ class AppWindow {
   }
 
   /// Read by the runner's window_placement.cpp; keep the two in step.
-  static const _pipProperty = 'YTPlusPictureInPicture';
+  static const _pipProperty = 'LumtubPictureInPicture';
 }
 
 final class _Rect extends Struct {

@@ -44,18 +44,18 @@ Future<void> main() async {
     // Directories are created again, with errors reported, during startup.
   }
   setLanguage(appearance.language);
-  runApp(YtPlusApp(controller: AppController(appearance: appearance, appearanceStore: store)));
+  runApp(LumtubApp(controller: AppController(appearance: appearance, appearanceStore: store)));
 }
 
-class YtPlusApp extends StatefulWidget {
-  const YtPlusApp({super.key, required this.controller});
+class LumtubApp extends StatefulWidget {
+  const LumtubApp({super.key, required this.controller});
   final AppController controller;
 
   @override
-  State<YtPlusApp> createState() => _YtPlusAppState();
+  State<LumtubApp> createState() => _LumtubAppState();
 }
 
-class _YtPlusAppState extends State<YtPlusApp> {
+class _LumtubAppState extends State<LumtubApp> {
   // Building a ColorScheme from a seed is not free; the controller notifies on
   // every search result, so themes are rebuilt only when their inputs change.
   Object? _themeKey;

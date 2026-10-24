@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/live_chat.dart';
+import 'package:lumtub/live_chat.dart';
 
 void main() {
   String line(Map<String, Object?> renderer, {int? offset}) => jsonEncode({

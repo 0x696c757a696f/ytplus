@@ -3,11 +3,11 @@ import 'dart:io';
 
 import 'package:media_kit/media_kit.dart';
 
-/// Where screenshots go: Pictures\YTPlus of the signed-in Windows user.
+/// Where screenshots go: Pictures\Lumtub of the signed-in Windows user.
 Directory screenshotDirectory([Map<String, String>? environment]) {
   final env = environment ?? Platform.environment;
   final home = env['USERPROFILE'] ?? env['HOME'] ?? '.';
-  return Directory('$home${Platform.pathSeparator}Pictures${Platform.pathSeparator}YTPlus');
+  return Directory('$home${Platform.pathSeparator}Pictures${Platform.pathSeparator}Lumtub');
 }
 
 /// A file name for a screenshot of [title] at [position]: the title cut to
@@ -18,7 +18,7 @@ String screenshotName(String title, Duration position, DateTime now) {
   String two(int n) => n.toString().padLeft(2, '0');
   final time = '${two(position.inHours)}-${two(position.inMinutes % 60)}-${two(position.inSeconds % 60)}';
   final stamp = '${now.year}${two(now.month)}${two(now.day)}-${two(now.hour)}${two(now.minute)}${two(now.second)}';
-  return '${short.isEmpty ? 'YTPlus' : short}_${time}_$stamp.png';
+  return '${short.isEmpty ? 'Lumtub' : short}_${time}_$stamp.png';
 }
 
 /// Saves the current frame, without subtitles or the interface, into

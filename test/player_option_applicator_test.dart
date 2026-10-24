@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/player_option_applicator.dart';
-import 'package:ytplus/player_settings.dart';
+import 'package:lumtub/player_option_applicator.dart';
+import 'package:lumtub/player_settings.dart';
 
 void main() {
   test('maps supported UI settings to libmpv options', () {

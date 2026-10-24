@@ -16,7 +16,7 @@ class RemotePlaylist {
 /// How the signed-in user rated a video.
 enum VideoRating { like, dislike, none }
 
-/// The parts of the YouTube Data API that YTPlus uses for a signed-in user.
+/// The parts of the YouTube Data API that Lumtub uses for a signed-in user.
 /// A read costs one unit of the client's daily quota, a change about 50.
 class YouTubeAccountApi {
   YouTubeAccountApi(this._client, this._accessToken);

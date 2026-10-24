@@ -3,7 +3,7 @@ import 'dart:ui' show Locale;
 import 'strings_en.dart';
 import 'strings_zh_hant.dart';
 
-/// The languages YTPlus is written in. The source strings are simplified
+/// The languages Lumtub is written in. The source strings are simplified
 /// Chinese; the other languages translate them.
 enum AppLanguage {
   system('跟随系统', null),
@@ -33,7 +33,7 @@ enum AppLanguage {
 AppLanguage _current = AppLanguage.zhHans; // source language, until main() calls setLanguage
 Map<String, String> _strings = const {};
 
-/// The language the interface is shown in, chosen when YTPlus starts.
+/// The language the interface is shown in, chosen when Lumtub starts.
 AppLanguage get currentLanguage => _current;
 
 /// Shows the interface in [language] from now on. Text already on screen

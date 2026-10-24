@@ -10,7 +10,7 @@ import 'l10n/l10n.dart';
 /// Read-only access to the account's YouTube data, as older versions asked.
 const youtubeReadonlyScope = 'https://www.googleapis.com/auth/youtube.readonly';
 
-/// Reading the account, and the changes the user makes from YTPlus: likes,
+/// Reading the account, and the changes the user makes from Lumtub: likes,
 /// comments, playlists and subscriptions. Nothing is changed unless the user
 /// asks for it.
 const youtubeScope = 'https://www.googleapis.com/auth/youtube.force-ssl';
@@ -28,8 +28,8 @@ class OAuthClientConfig {
 
   /// Set at build time with `--dart-define`; empty when the build has none.
   static const builtIn = OAuthClientConfig(
-    String.fromEnvironment('YTPLUS_GOOGLE_CLIENT_ID'),
-    String.fromEnvironment('YTPLUS_GOOGLE_CLIENT_SECRET'),
+    String.fromEnvironment('LUMTUB_GOOGLE_CLIENT_ID'),
+    String.fromEnvironment('LUMTUB_GOOGLE_CLIENT_SECRET'),
   );
 
   bool get isValid => id.trim().endsWith('.apps.googleusercontent.com');
@@ -172,7 +172,7 @@ class GoogleAuth {
       }
       final ok = query['state'] == state && query['code'] != null;
       request.response.headers.contentType = ContentType.html;
-      request.response.write(_page(ok ? tr('登录成功') : tr('登录没有完成'), ok ? tr('可以关闭这个页面，回到 YTPlus。') : tr('请回到 YTPlus 重试。')));
+      request.response.write(_page(ok ? tr('登录成功') : tr('登录没有完成'), ok ? tr('可以关闭这个页面，回到 Lumtub。') : tr('请回到 Lumtub 重试。')));
       await request.response.close();
       if (query['state'] != state) throw OAuthException(tr('登录回调校验失败，请重试'));
       final error = query['error'];
@@ -221,7 +221,7 @@ class GoogleAuth {
     }
   }
 
-  static String _page(String title, String message) => '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>YTPlus</title>'
+  static String _page(String title, String message) => '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>Lumtub</title>'
       '<body style="font-family:system-ui,sans-serif;display:grid;place-items:center;height:90vh;margin:0">'
       '<div style="text-align:center"><h2>$title</h2><p>$message</p></div></body></html>';
 }

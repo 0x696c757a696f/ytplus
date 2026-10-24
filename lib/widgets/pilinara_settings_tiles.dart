@@ -5,7 +5,7 @@
 //
 // PiliNara: https://github.com/Starfallan/PiliNara
 // Copyright (C) PiliNara contributors.
-// Adapted for YTPlus under the GNU General Public License, version 3 or
+// Adapted for Lumtub under the GNU General Public License, version 3 or
 // later. Changes: values are passed in and reported through callbacks
 // instead of being read from and written to PiliNara's storage, and the
 // GetX and SmartDialog dependencies are removed.

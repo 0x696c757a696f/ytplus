@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app_log.dart';
-import 'package:ytplus/playback_recovery.dart';
-import 'package:ytplus/ui/player_stats.dart';
+import 'package:lumtub/app_log.dart';
+import 'package:lumtub/playback_recovery.dart';
+import 'package:lumtub/ui/player_stats.dart';
 
 void main() {
   group('log', () {
@@ -20,7 +20,7 @@ void main() {
     });
 
     test('appends lines and rotates a large log', () async {
-      final dir = await Directory.systemTemp.createTemp('ytplus_log');
+      final dir = await Directory.systemTemp.createTemp('lumtub_log');
       addTearDown(() => dir.delete(recursive: true));
       final log = (await AppLog.open(dir))!;
       log.write('INFO ', '第一行');
@@ -31,24 +31,24 @@ void main() {
       expect(text, contains('refresh_token=***'));
       await log.file.writeAsBytes(List.filled(AppLog.maxBytes + 1, 65));
       await AppLog.open(dir);
-      expect(await File('${dir.path}/ytplus.old.log').exists(), isTrue);
-      expect(await File('${dir.path}/ytplus.log').exists(), isFalse);
+      expect(await File('${dir.path}/lumtub.old.log').exists(), isTrue);
+      expect(await File('${dir.path}/lumtub.log').exists(), isFalse);
       AppLog.current = null;
     });
 
     test('rotates during a long session once the file passes the limit', () async {
-      final dir = await Directory.systemTemp.createTemp('ytplus_log');
+      final dir = await Directory.systemTemp.createTemp('lumtub_log');
       addTearDown(() => dir.delete(recursive: true));
       final log = (await AppLog.open(dir))!;
       log.write('INFO ', 'x' * 1000);
       await log.flush();
-      expect(await File('${dir.path}/ytplus.old.log').exists(), isFalse);
+      expect(await File('${dir.path}/lumtub.old.log').exists(), isFalse);
       for (var i = 0; i < 1100; i++) {
         log.write('INFO ', 'y' * 1000);
       }
       await log.flush();
-      expect(await File('${dir.path}/ytplus.old.log').exists(), isTrue);
-      expect(await File('${dir.path}/ytplus.log').exists(), isFalse);
+      expect(await File('${dir.path}/lumtub.old.log').exists(), isTrue);
+      expect(await File('${dir.path}/lumtub.log').exists(), isFalse);
       log.write('INFO ', 'after');
       await log.flush();
       expect(await log.file.readAsLines(), hasLength(1));
@@ -56,7 +56,7 @@ void main() {
     });
 
     test('batches lines in order and flushes pending ones on demand', () async {
-      final dir = await Directory.systemTemp.createTemp('ytplus_log');
+      final dir = await Directory.systemTemp.createTemp('lumtub_log');
       addTearDown(() => dir.delete(recursive: true));
       final log = (await AppLog.open(dir))!;
       for (var i = 0; i < 50; i++) {

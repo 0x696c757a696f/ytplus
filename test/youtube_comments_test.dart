@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/youtube_comments.dart';
+import 'package:lumtub/youtube_comments.dart';
 
 Map<String, Object?> _continuation(String token) => {
       'continuationItemRenderer': {

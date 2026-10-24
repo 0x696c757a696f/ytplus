@@ -7,7 +7,7 @@ import 'app_directories.dart';
 import 'l10n/l10n.dart';
 
 /// Seed colours offered in Settings; the first is the default. The first
-/// six are YTPlus's own, the rest PiliNara's palette.
+/// six are Lumtub's own, the rest PiliNara's palette.
 final accentChoices = <(String, Color)>[
   (tr('YouTube 红'), Color(0xFFE53935)),
   (tr('青绿'), Color(0xFF26A69A)),
@@ -78,7 +78,7 @@ enum ThumbnailQuality {
   String get label => tr(_label);
 }
 
-/// The font bundled with YTPlus and used by default.
+/// The font bundled with Lumtub and used by default.
 const bundledFont = 'Noto Sans CJK SC';
 
 /// Fonts offered in Settings: the bundled one, then fonts that ship with

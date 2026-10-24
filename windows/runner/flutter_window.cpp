@@ -12,7 +12,7 @@ namespace {
 // (lib/app_window.dart) is shown, otherwise 0. The window property holds the
 // ratio times 1000.
 double PictureInPictureAspect(HWND window) {
-  return reinterpret_cast<uintptr_t>(::GetProp(window, L"YTPlusPictureInPicture")) / 1000.0;
+  return reinterpret_cast<uintptr_t>(::GetProp(window, L"LumtubPictureInPicture")) / 1000.0;
 }
 
 }  // namespace

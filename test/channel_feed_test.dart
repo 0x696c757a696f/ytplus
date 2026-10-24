@@ -2,10 +2,10 @@ import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/app/library_controller.dart';
-import 'package:ytplus/channel_feed.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/video_repository.dart';
+import 'package:lumtub/app/library_controller.dart';
+import 'package:lumtub/channel_feed.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/video_repository.dart';
 
 void main() {
   const channel = ChannelRef('UCuAXFkgsw1L7xaCfnd5JJOw', 'Rick Astley');

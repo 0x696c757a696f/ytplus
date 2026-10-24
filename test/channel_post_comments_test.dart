@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app/posts_loader.dart';
-import 'package:ytplus/community_posts.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/ui/pages/channel_page.dart';
-import 'package:ytplus/video_repository.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app/posts_loader.dart';
+import 'package:lumtub/community_posts.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/ui/pages/channel_page.dart';
+import 'package:lumtub/video_repository.dart';
 
 void main() {
   Future<AppController> pump(WidgetTester tester, Size size) async {

@@ -2,17 +2,17 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/appearance_settings.dart';
-import 'package:ytplus/explore_topics.dart';
-import 'package:ytplus/faith_topics.dart';
-import 'package:ytplus/l10n/l10n.dart';
-import 'package:ytplus/l10n/strings_en.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/ui/pages/explore_page.dart';
-import 'package:ytplus/ui/pages/settings_page.dart';
-import 'package:ytplus/ui/pages/settings_sections.dart';
-import 'package:ytplus/ui/theme.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/appearance_settings.dart';
+import 'package:lumtub/explore_topics.dart';
+import 'package:lumtub/faith_topics.dart';
+import 'package:lumtub/l10n/l10n.dart';
+import 'package:lumtub/l10n/strings_en.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/ui/pages/explore_page.dart';
+import 'package:lumtub/ui/pages/settings_page.dart';
+import 'package:lumtub/ui/pages/settings_sections.dart';
+import 'package:lumtub/ui/theme.dart';
 
 /// The first argument of every tr('…') call in lib/, as the running app
 /// passes it.

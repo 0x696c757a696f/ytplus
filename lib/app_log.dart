@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 /// The app version, set by the release build with `--dart-define`.
-const appVersion = String.fromEnvironment('YTPLUS_VERSION', defaultValue: '开发版');
+const appVersion = String.fromEnvironment('LUMTUB_VERSION', defaultValue: '开发版');
 
 /// A small plain-text log in the app's `logs` folder, for diagnosing problems
 /// on other people's computers. It stays on this computer and never contains
@@ -21,14 +21,14 @@ class AppLog {
 
   static const maxBytes = 1024 * 1024;
 
-  /// Starts the log, keeping the previous one as `ytplus.old.log` once it
+  /// Starts the log, keeping the previous one as `lumtub.old.log` once it
   /// grows past [maxBytes].
   static Future<AppLog?> open(Directory directory) async {
     try {
       await directory.create(recursive: true);
-      final file = File('${directory.path}${Platform.pathSeparator}ytplus.log');
+      final file = File('${directory.path}${Platform.pathSeparator}lumtub.log');
       if (await file.exists() && await file.length() > maxBytes) {
-        final previous = File('${directory.path}${Platform.pathSeparator}ytplus.old.log');
+        final previous = File('${directory.path}${Platform.pathSeparator}lumtub.old.log');
         if (await previous.exists()) await previous.delete();
         await file.rename(previous.path);
       }
@@ -70,7 +70,7 @@ class AppLog {
           _size += utf8.encode(text).length;
           // A long session rotates too, not only the next start.
           if (_size > maxBytes) {
-            final previous = File('${file.parent.path}${Platform.pathSeparator}ytplus.old.log');
+            final previous = File('${file.parent.path}${Platform.pathSeparator}lumtub.old.log');
             if (await previous.exists()) await previous.delete();
             await file.rename(previous.path);
             _size = 0;

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/decoder_status.dart';
-import 'package:ytplus/player_settings.dart';
-import 'package:ytplus/video_codec.dart';
+import 'package:lumtub/decoder_status.dart';
+import 'package:lumtub/player_settings.dart';
+import 'package:lumtub/video_codec.dart';
 
 void main() {
   test('invalid persisted values return safe defaults', () {

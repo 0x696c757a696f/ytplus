@@ -4,9 +4,9 @@
 //
 // PiliNara: https://github.com/Starfallan/PiliNara
 // Copyright (C) PiliNara contributors.
-// Adapted for YTPlus under the GNU General Public License, version 3 or
+// Adapted for Lumtub under the GNU General Public License, version 3 or
 // later. Changes: GetX routing is replaced with local state and a
-// MaterialPageRoute, and the groups are YTPlus's own.
+// MaterialPageRoute, and the groups are Lumtub's own.
 
 import 'package:flutter/material.dart';
 

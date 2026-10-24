@@ -5,9 +5,9 @@ import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/piped_streams.dart';
-import 'package:ytplus/player_settings.dart';
-import 'package:ytplus/video_codec.dart';
+import 'package:lumtub/piped_streams.dart';
+import 'package:lumtub/player_settings.dart';
+import 'package:lumtub/video_codec.dart';
 
 Map<String, dynamic> _streams() => {
       'title': 'x',

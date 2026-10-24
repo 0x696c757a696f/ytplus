@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:ytplus/dearrow.dart';
-import 'package:ytplus/player_settings.dart';
+import 'package:lumtub/dearrow.dart';
+import 'package:lumtub/player_settings.dart';
 
 void main() {
   test('reads the best title and frame that are not YouTube\'s own', () {

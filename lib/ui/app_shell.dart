@@ -22,7 +22,7 @@ import 'theme.dart';
 import 'video_card.dart';
 import '../l10n/l10n.dart';
 
-const appName = 'YTPlus';
+const appName = 'Lumtub';
 
 /// Top bar, navigation rail (bottom bar on narrow windows), page area and
 /// status line.

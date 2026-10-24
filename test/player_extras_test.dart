@@ -2,21 +2,21 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/heatmap.dart';
-import 'package:ytplus/keep_awake.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/picture_transform.dart';
-import 'package:ytplus/progress_line.dart';
-import 'package:ytplus/screenshot.dart';
-import 'package:ytplus/storyboard.dart';
-import 'package:ytplus/ui/player_controls.dart';
-import 'package:ytplus/ui/player_shortcuts.dart';
-import 'package:ytplus/ui/theater_mode.dart';
-import 'package:ytplus/ui/theme.dart';
-import 'package:ytplus/widgets/mini_progress_line.dart';
-import 'package:ytplus/widgets/video_progress_bar.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/heatmap.dart';
+import 'package:lumtub/keep_awake.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/picture_transform.dart';
+import 'package:lumtub/progress_line.dart';
+import 'package:lumtub/screenshot.dart';
+import 'package:lumtub/storyboard.dart';
+import 'package:lumtub/ui/player_controls.dart';
+import 'package:lumtub/ui/player_shortcuts.dart';
+import 'package:lumtub/ui/theater_mode.dart';
+import 'package:lumtub/ui/theme.dart';
+import 'package:lumtub/widgets/mini_progress_line.dart';
+import 'package:lumtub/widgets/video_progress_bar.dart';
 
 import 'player_controls_test.dart' show FakePlayer;
 
@@ -109,13 +109,13 @@ void main() {
     test('screenshot names are safe and sorted by time', () {
       final name = screenshotName('A/B: "C"? <D>', const Duration(hours: 1, minutes: 2, seconds: 3), DateTime(2026, 3, 4, 5, 6, 7));
       expect(name, 'A B C D_01-02-03_20260304-050607.png');
-      expect(screenshotName('', Duration.zero, DateTime(2026)), startsWith('YTPlus_00-00-00_'));
+      expect(screenshotName('', Duration.zero, DateTime(2026)), startsWith('Lumtub_00-00-00_'));
       expect(screenshotName('x' * 100, Duration.zero, DateTime(2026)).split('_').first.length, 40);
     });
 
-    test('screenshots go to Pictures\\YTPlus under the user profile', () {
+    test('screenshots go to Pictures\\Lumtub under the user profile', () {
       final dir = screenshotDirectory({'USERPROFILE': 'C:\\Users\\me'});
-      expect(dir.path, endsWith('Pictures${dir.path.contains('/') ? '/' : '\\'}YTPlus'));
+      expect(dir.path, endsWith('Pictures${dir.path.contains('/') ? '/' : '\\'}Lumtub'));
       expect(dir.path, startsWith('C:\\Users\\me'));
     });
 

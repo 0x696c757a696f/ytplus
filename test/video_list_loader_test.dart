@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/video_list_loader.dart';
-import 'package:ytplus/video_repository.dart';
-import 'package:ytplus/models.dart';
+import 'package:lumtub/app/video_list_loader.dart';
+import 'package:lumtub/video_repository.dart';
+import 'package:lumtub/models.dart';
 
 String _video(int i) => jsonEncode({'id': 'v${i.toString().padLeft(10, '0')}', 'title': '$i', 'channel': ''});
 

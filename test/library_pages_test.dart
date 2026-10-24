@@ -5,17 +5,17 @@ import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app/library_controller.dart';
-import 'package:ytplus/app/video_list_loader.dart';
-import 'package:ytplus/library_store.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/ui/pages/channel_page.dart';
-import 'package:ytplus/ui/pages/library_pages.dart';
-import 'package:ytplus/ui/theme.dart';
-import 'package:ytplus/ui/video_card.dart';
-import 'package:ytplus/video_repository.dart';
-import 'package:ytplus/youtube_account.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app/library_controller.dart';
+import 'package:lumtub/app/video_list_loader.dart';
+import 'package:lumtub/library_store.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/ui/pages/channel_page.dart';
+import 'package:lumtub/ui/pages/library_pages.dart';
+import 'package:lumtub/ui/theme.dart';
+import 'package:lumtub/ui/video_card.dart';
+import 'package:lumtub/video_repository.dart';
+import 'package:lumtub/youtube_account.dart';
 
 void main() {
   const channel = ChannelRef('UCuAXFkgsw1L7xaCfnd5JJOw', 'Rick Astley');
@@ -28,7 +28,7 @@ void main() {
   late LibraryController library;
 
   setUp(() {
-    final dir = Directory.systemTemp.createTempSync('ytplus_pages');
+    final dir = Directory.systemTemp.createTempSync('lumtub_pages');
     addTearDown(() => dir.deleteSync(recursive: true));
     final store = LibraryStore(File('${dir.path}/library.json'));
     library = LibraryController(store);

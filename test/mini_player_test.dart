@@ -1,12 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/main.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/ui/mini_player.dart';
-import 'package:ytplus/ui/theme.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/main.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/ui/mini_player.dart';
+import 'package:lumtub/ui/theme.dart';
 
 import 'player_controls_test.dart' show FakePlayer;
 
@@ -270,7 +270,7 @@ void main() {
     tester.view.physicalSize = const Size(1280, 800);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
-    await tester.pumpWidget(YtPlusApp(controller: controller));
+    await tester.pumpWidget(LumtubApp(controller: controller));
     await tester.pump();
     expect(find.byType(MiniPlayer), findsNothing);
 

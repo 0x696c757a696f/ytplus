@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/player_settings.dart';
-import 'package:ytplus/return_dislike.dart';
+import 'package:lumtub/player_settings.dart';
+import 'package:lumtub/return_dislike.dart';
 
 void main() {
   test('reads Return YouTube Dislike votes; off unless turned on', () {

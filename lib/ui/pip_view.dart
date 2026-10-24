@@ -5,7 +5,7 @@
 //
 // PiliNara: https://github.com/Starfallan/PiliNara
 // Copyright (C) PiliNara contributors.
-// Adapted for YTPlus under the GNU General Public License, version 3 or
+// Adapted for Lumtub under the GNU General Public License, version 3 or
 // later. Changes: the window is moved and sized through lib/app_window.dart
 // instead of window_manager; the controls are a small set of buttons.
 

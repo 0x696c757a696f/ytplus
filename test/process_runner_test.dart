@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/process_runner.dart';
-import 'package:ytplus/version_order.dart';
+import 'package:lumtub/process_runner.dart';
+import 'package:lumtub/version_order.dart';
 
 void main() {
   test('collects output and the exit code', () async {
@@ -16,7 +16,7 @@ void main() {
 
   test('kills a process that outlives the timeout', () async {
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_runner');
+    final dir = await Directory.systemTemp.createTemp('lumtub_runner');
     addTearDown(() => dir.delete(recursive: true));
     final pidFile = File('${dir.path}/pid');
     // exec keeps the shell's pid, so the recorded one is the process killed.

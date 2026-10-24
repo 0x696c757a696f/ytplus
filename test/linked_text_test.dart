@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/ui/linked_text.dart';
+import 'package:lumtub/ui/linked_text.dart';
 
 void main() {
   test('finds times and links in a description', () {

@@ -13,7 +13,7 @@ class ChannelAvatars {
 
   Future<String?> fetch(ChannelRef channel) async {
     final response = await _client.get(pageUri(channel), headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) YTPlus-Windows/0.1',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Lumtub-Windows/0.1',
       'Accept-Language': 'en',
       // Skips the cookie consent page shown in some regions.
       'Cookie': 'SOCS=CAI',

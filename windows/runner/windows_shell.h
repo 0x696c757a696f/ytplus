@@ -11,7 +11,7 @@
 #include <string>
 
 // The app's ties to the Windows shell, driven from Dart over the
-// "ytplus/windows_shell" method channel (lib/windows_shell.dart): the media
+// "lumtub/windows_shell" method channel (lib/windows_shell.dart): the media
 // overlay (System Media Transport Controls) with the media keys, and an
 // optional tray icon the close button hides the window to.
 class WindowsShell {

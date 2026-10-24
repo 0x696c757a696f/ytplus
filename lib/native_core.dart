@@ -2,28 +2,28 @@ import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 
-/// ytplus_core.dll, the Rust library built from native/ytplus_core and
-/// shipped next to ytplus.exe. Everything that uses it has a fallback, so
+/// lumtub_core.dll, the Rust library built from native/lumtub_core and
+/// shipped next to lumtub.exe. Everything that uses it has a fallback, so
 /// a missing or older DLL only loses what it adds.
 class NativeCore {
   NativeCore._(DynamicLibrary library)
-      : _adopt = library.lookupFunction<IntPtr Function(Uint32), int Function(int)>('ytp_tree_adopt'),
-        _kill = library.lookupFunction<Bool Function(IntPtr, Uint32), bool Function(int, int)>('ytp_tree_kill'),
-        _close = library.lookupFunction<Void Function(IntPtr), void Function(int)>('ytp_tree_close');
+      : _adopt = library.lookupFunction<IntPtr Function(Uint32), int Function(int)>('lumtub_tree_adopt'),
+        _kill = library.lookupFunction<Bool Function(IntPtr, Uint32), bool Function(int, int)>('lumtub_tree_kill'),
+        _close = library.lookupFunction<Void Function(IntPtr), void Function(int)>('lumtub_tree_close');
 
   final int Function(int pid) _adopt;
   final bool Function(int job, int code) _kill;
   final void Function(int job) _close;
 
   /// The library, or null when it is not there (tests, `flutter run`, or
-  /// another platform). YTPLUS_CORE_DLL points at another copy.
+  /// another platform). LUMTUB_CORE_DLL points at another copy.
   static final NativeCore? instance = _load();
 
   static NativeCore? _load() {
     if (!Platform.isWindows) return null;
     final paths = [
-      if (Platform.environment['YTPLUS_CORE_DLL'] case final path? when path.isNotEmpty) path,
-      '${File(Platform.resolvedExecutable).parent.path}${Platform.pathSeparator}ytplus_core.dll',
+      if (Platform.environment['LUMTUB_CORE_DLL'] case final path? when path.isNotEmpty) path,
+      '${File(Platform.resolvedExecutable).parent.path}${Platform.pathSeparator}lumtub_core.dll',
     ];
     for (final path in paths) {
       if (!File(path).existsSync()) continue;
@@ -39,8 +39,8 @@ class NativeCore {
 
 /// [process] and everything it starts (yt-dlp's ffmpeg and Deno), kept in
 /// a job object: [kill] ends all of them, and whatever is still running
-/// when [process] exits, or when YTPlus itself exits or crashes, ends too.
-/// Without ytplus_core.dll it is [process] alone, as before.
+/// when [process] exits, or when Lumtub itself exits or crashes, ends too.
+/// Without lumtub_core.dll it is [process] alone, as before.
 class ProcessTree implements Process {
   ProcessTree._(this._process, this._job) {
     _process.exitCode.then((_) => _release(), onError: (_) => _release());

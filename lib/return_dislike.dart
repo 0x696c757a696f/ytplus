@@ -28,7 +28,7 @@ class ReturnDislike {
   Future<DislikeCount?> votes(String videoId) async {
     final cached = _cache[videoId];
     if (cached != null) return cached;
-    final response = await _client.get(requestUri(videoId), headers: {'User-Agent': 'YTPlus-Windows/0.1'}).timeout(const Duration(seconds: 10));
+    final response = await _client.get(requestUri(videoId), headers: {'User-Agent': 'Lumtub-Windows/0.1'}).timeout(const Duration(seconds: 10));
     if (response.statusCode != 200) return null;
     final count = parse(response.body);
     if (count != null) {

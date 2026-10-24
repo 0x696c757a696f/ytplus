@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/google_auth.dart';
+import 'package:lumtub/google_auth.dart';
 
 const config = OAuthClientConfig('123-abc.apps.googleusercontent.com', 'desktop-secret');
 

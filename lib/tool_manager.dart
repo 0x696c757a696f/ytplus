@@ -57,7 +57,7 @@ class ToolManager {
     // The runner already loaded a downloaded libmpv when one was selected;
     // Dart has to open that same copy.
     final mpv = libmpv.loadedPath ?? _bundledMpv;
-    if (!File(mpv).existsSync()) throw StateError('Bundled libmpv-2.dll is missing. Re-download the YTPlus package.');
+    if (!File(mpv).existsSync()) throw StateError('Bundled libmpv-2.dll is missing. Re-download the Lumtub package.');
     if (discover()?.ytDlp.isNotEmpty != true) {
       status(tr('首次启动：安装 yt-dlp…'));
       await _installYtDlp();
@@ -179,7 +179,7 @@ class ToolManager {
   Future<Map<String, dynamic>> _release(String repository, {String? tag}) async {
     final response = await _client.get(
       Uri.parse('https://api.github.com/repos/$repository/releases/${tag == null ? 'latest' : 'tags/$tag'}'),
-      headers: {'Accept': 'application/vnd.github+json', 'User-Agent': 'YTPlus-Windows/0.1'},
+      headers: {'Accept': 'application/vnd.github+json', 'User-Agent': 'Lumtub-Windows/0.1'},
     ).timeout(const Duration(seconds: 25));
     if (response.statusCode != 200) throw HttpException('GitHub API HTTP ${response.statusCode} for $repository');
     return jsonDecode(response.body) as Map<String, dynamic>;
@@ -190,7 +190,7 @@ class ToolManager {
   Future<Map<String, dynamic>> _ffmpegRelease() async {
     final response = await _client.get(
       Uri.parse('https://api.github.com/repos/$ffmpegRepository/releases?per_page=30'),
-      headers: {'Accept': 'application/vnd.github+json', 'User-Agent': 'YTPlus-Windows/0.1'},
+      headers: {'Accept': 'application/vnd.github+json', 'User-Agent': 'Lumtub-Windows/0.1'},
     ).timeout(const Duration(seconds: 25));
     if (response.statusCode != 200) throw HttpException('GitHub API HTTP ${response.statusCode} for $ffmpegRepository');
     final releases = jsonDecode(response.body);
@@ -232,7 +232,7 @@ class ToolManager {
     if (await temp.exists()) await temp.delete();
     try {
       final request = http.Request('GET', uri);
-      request.headers['User-Agent'] = 'YTPlus-Windows/0.1';
+      request.headers['User-Agent'] = 'Lumtub-Windows/0.1';
       final result = await _client.send(request).timeout(const Duration(seconds: 30));
       if (result.statusCode != 200) throw HttpException('Download failed: HTTP ${result.statusCode}');
       final sink = temp.openWrite();
@@ -453,7 +453,7 @@ class ToolManager {
     if (await File('${dest.path}${_separator}ffmpeg.exe').exists()) return;
     status(tr('下载 ffmpeg {0}…', [folder]));
     // The hash comes from the checksum file of the same release, over HTTPS.
-    final sums = await _client.get(_assetUri(_asset(release, (name) => name == ffmpegChecksumsAsset)), headers: {'User-Agent': 'YTPlus-Windows/0.1'}).timeout(const Duration(seconds: 30));
+    final sums = await _client.get(_assetUri(_asset(release, (name) => name == ffmpegChecksumsAsset)), headers: {'User-Agent': 'Lumtub-Windows/0.1'}).timeout(const Duration(seconds: 30));
     if (sums.statusCode != 200) throw HttpException('Checksum file HTTP ${sums.statusCode}');
     final expected = parseChecksums(sums.body)[assetName];
     if (expected == null) throw StateError('No checksum listed for $assetName');

@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 
-/// The small set of directories owned by YTPlus.
+/// The small set of directories owned by Lumtub.
 ///
 /// They live under LocalAppData, so the installed package initialises without
 /// elevation, or for the portable package in the userdata folder next to the
 /// executable: the Windows runner (windows/runner/data_root.cpp) picks one
-/// and passes it on as YTPLUS_HOME. Only files created by YTPlus are kept here.
+/// and passes it on as LUMTUB_HOME. Only files created by Lumtub are kept here.
 class AppDirectories {
   final Directory root;
   final Directory config;
@@ -36,13 +36,13 @@ class AppDirectories {
 
   static Future<AppDirectories> create({Map<String, String>? environment}) async {
     final env = environment ?? Platform.environment;
-    final home = env['YTPLUS_HOME'];
+    final home = env['LUMTUB_HOME'];
     final localAppData = env['LOCALAPPDATA'];
     final root = home != null && home.trim().isNotEmpty
         ? Directory(home)
         : localAppData == null || localAppData.trim().isEmpty
-        ? Directory('${(await getApplicationSupportDirectory()).path}${Platform.pathSeparator}YTPlus')
-        : Directory('$localAppData${Platform.pathSeparator}YTPlus');
+        ? Directory('${(await getApplicationSupportDirectory()).path}${Platform.pathSeparator}Lumtub')
+        : Directory('$localAppData${Platform.pathSeparator}Lumtub');
     final directories = AppDirectories.at(root);
     await directories.ensureExists();
     return directories;

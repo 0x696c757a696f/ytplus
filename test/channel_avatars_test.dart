@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/app/library_controller.dart';
-import 'package:ytplus/channel_avatars.dart';
-import 'package:ytplus/library_store.dart';
-import 'package:ytplus/models.dart';
+import 'package:lumtub/app/library_controller.dart';
+import 'package:lumtub/channel_avatars.dart';
+import 'package:lumtub/library_store.dart';
+import 'package:lumtub/models.dart';
 
 void main() {
   const a = ChannelRef('UCuAXFkgsw1L7xaCfnd5JJOw', 'A');
@@ -30,7 +30,7 @@ void main() {
   });
 
   test('channels saved without a picture get one once, a few at a time', () async {
-    final dir = Directory.systemTemp.createTempSync('ytplus_avatars');
+    final dir = Directory.systemTemp.createTempSync('lumtub_avatars');
     addTearDown(() => dir.deleteSync(recursive: true));
     var active = 0;
     var peak = 0;

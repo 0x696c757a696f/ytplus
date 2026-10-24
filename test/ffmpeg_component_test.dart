@@ -4,9 +4,9 @@ import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/downloads/download_models.dart';
-import 'package:ytplus/ffmpeg_component.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/downloads/download_models.dart';
+import 'package:lumtub/ffmpeg_component.dart';
 
 /// A zip with [entries] (name -> bytes), deflated, written the way zip tools do.
 Uint8List _zip(Map<String, List<int>> entries, {bool corruptCrc = false}) {
@@ -102,7 +102,7 @@ void main() {
 
   group('extraction', () {
     late Directory temp;
-    setUp(() => temp = Directory.systemTemp.createTempSync('ytplus_ffmpeg'));
+    setUp(() => temp = Directory.systemTemp.createTempSync('lumtub_ffmpeg'));
     tearDown(() => temp.deleteSync(recursive: true));
 
     final exe = List<int>.generate(5000, (i) => i % 251);

@@ -7,7 +7,7 @@ import '../app_log.dart';
 import '../l10n/l10n.dart';
 import '../screenshot.dart';
 
-/// Saves the current frame of the playing video into Pictures\YTPlus, puts
+/// Saves the current frame of the playing video into Pictures\Lumtub, puts
 /// it on the clipboard and tells where it went, with a button that shows
 /// the file in Explorer. [onFeedback] is the indicator over the video, the
 /// only message visible in fullscreen.

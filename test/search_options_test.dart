@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/search_options.dart';
-import 'package:ytplus/search_suggestions.dart';
-import 'package:ytplus/video_repository.dart';
+import 'package:lumtub/search_options.dart';
+import 'package:lumtub/search_suggestions.dart';
+import 'package:lumtub/video_repository.dart';
 
 void main() {
   group('searchParams', () {
@@ -48,7 +48,7 @@ void main() {
   });
 
   test('keeps search history newest first without repeats', () async {
-    final dir = await Directory.systemTemp.createTemp('ytplus_search');
+    final dir = await Directory.systemTemp.createTemp('lumtub_search');
     addTearDown(() => dir.delete(recursive: true));
     final file = File('${dir.path}/search_history.json');
     final history = SearchHistory(file);

@@ -5,7 +5,7 @@ if (-not (Get-Command flutter -ErrorAction SilentlyContinue)) {
 }
 flutter doctor -v
 if ($LASTEXITCODE -ne 0) { throw 'flutter doctor failed' }
-flutter create --platforms=windows --project-name ytplus .
+flutter create --platforms=windows --project-name lumtub .
 if ($LASTEXITCODE -ne 0) { throw 'flutter create failed' }
 flutter pub get
 if ($LASTEXITCODE -ne 0) { throw 'flutter pub get failed' }

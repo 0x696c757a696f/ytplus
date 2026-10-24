@@ -1,4 +1,4 @@
-name: ytplus
+name: lumtub
 description: A lightweight native Windows YouTube player built with Flutter and libmpv.
 publish_to: none
 version: 0.1.0+1
@@ -25,7 +25,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
 
-# A copy of media_kit_video with one Windows fix; see vendor/media_kit_video/YTPLUS.md.
+# A copy of media_kit_video with one Windows fix; see vendor/media_kit_video/LUMTUB.md.
 dependency_overrides:
   media_kit_video:
     path: vendor/media_kit_video

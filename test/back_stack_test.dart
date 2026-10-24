@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app/back_stack.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/video_repository.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app/back_stack.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/video_repository.dart';
 
 void main() {
   group('BackStack', () {

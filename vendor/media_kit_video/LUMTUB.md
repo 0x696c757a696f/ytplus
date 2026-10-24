@@ -1,7 +1,7 @@
-# media_kit_video 2.0.1, patched for YTPlus
+# media_kit_video 2.0.1, patched for Lumtub
 
 Copied from pub.dev (MIT, see LICENSE) with only the Windows plugin kept.
-The changes, marked "YTPlus" in the code:
+The changes, marked "Lumtub" in the code:
 
 - `windows/angle_surface_manager.cc` (`Read`): wait for the copy into the
   shared texture to finish before Flutter samples it, which otherwise shows

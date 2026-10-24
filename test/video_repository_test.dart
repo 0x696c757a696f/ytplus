@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/video_repository.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/video_repository.dart';
 
 void main() {
   test('searches YouTube\'s results page so channels are listed too', () {
@@ -19,7 +19,7 @@ void main() {
 
   test('streams results line by line from one process', () async {
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_search');
+    final dir = await Directory.systemTemp.createTemp('lumtub_search');
     addTearDown(() => dir.delete(recursive: true));
     final script = File('${dir.path}/fake-yt-dlp');
     await script.writeAsString('#!/bin/sh\n'
@@ -36,7 +36,7 @@ void main() {
 
   test('reports yt-dlp errors when nothing was listed', () async {
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_search');
+    final dir = await Directory.systemTemp.createTemp('lumtub_search');
     addTearDown(() => dir.delete(recursive: true));
     final script = File('${dir.path}/fake-yt-dlp');
     await script.writeAsString('#!/bin/sh\necho "ERROR: blocked" >&2\nexit 1\n');
@@ -47,7 +47,7 @@ void main() {
   test('searches inside a channel', () async {
     const channel = ChannelRef('UCuAXFkgsw1L7xaCfnd5JJOw', 'Rick Astley');
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_search');
+    final dir = await Directory.systemTemp.createTemp('lumtub_search');
     addTearDown(() => dir.delete(recursive: true));
     final script = File('${dir.path}/fake-yt-dlp');
     await script.writeAsString('#!/bin/sh\nfor a; do last="\$a"; done\necho "{\\"id\\":\\"dQw4w9WgXcQ\\",\\"title\\":\\"\$last\\"}"\n');

@@ -218,7 +218,7 @@ WindowsShell::WindowsShell(HWND window, flutter::BinaryMessenger* messenger) : w
     media_.reset();  // Without the overlay everything else still works.
   }
   channel_ = std::make_unique<flutter::MethodChannel<EncodableValue>>(
-      messenger, "ytplus/windows_shell", &flutter::StandardMethodCodec::GetInstance());
+      messenger, "lumtub/windows_shell", &flutter::StandardMethodCodec::GetInstance());
   channel_->SetMethodCallHandler([this](const auto& call, auto result) { HandleCall(call, std::move(result)); });
 }
 
@@ -305,7 +305,7 @@ void WindowsShell::HideToTray() {
   icon.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
   icon.uCallbackMessage = kTrayMessage;
   icon.hIcon = ::LoadIcon(::GetModuleHandle(nullptr), MAKEINTRESOURCE(IDI_APP_ICON));
-  wcscpy_s(icon.szTip, L"YTPlus");
+  wcscpy_s(icon.szTip, L"Lumtub");
   if (!tray_icon_ && !::Shell_NotifyIconW(NIM_ADD, &icon)) return;  // No icon to bring it back: stay open.
   tray_icon_ = true;
   ::ShowWindow(window_, SW_HIDE);

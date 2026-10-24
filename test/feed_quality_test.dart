@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/feed_quality.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/recommendations.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/feed_quality.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/recommendations.dart';
 
 VideoItem v(String id, {String title = 'title', String channel = 'c', int? duration, int? width, int? height, String? description, bool shortListing = false, String? url}) => VideoItem(
       id: id.padRight(11, '_'),

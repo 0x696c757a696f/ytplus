@@ -79,7 +79,8 @@ class LocalVideo {
       // Played without subtitles.
     }
     subtitles.sort((a, b) => a.path.compareTo(b.path));
-    final raw = (info['ytplus'] as Map?)?['sponsorblock'];
+    // Downloads made before the rename keep their data under 'ytplus'.
+    final raw = ((info['lumtub'] ?? info['ytplus']) as Map?)?['sponsorblock'];
     final segments = <SkipSegment>[
       if (raw is List)
         for (final s in raw.whereType<Map>())
@@ -143,11 +144,11 @@ class DownloadManager extends ChangeNotifier {
   /// Whether ffmpeg is there to merge video and audio streams.
   bool get canMerge => ffmpegDirectory?.call() != null;
 
-  /// The folder for downloads when none was chosen: Videos\YTPlus.
+  /// The folder for downloads when none was chosen: Videos\Lumtub.
   static String defaultDirectoryFor(Map<String, String> env, String fallback) {
     final home = env['USERPROFILE'];
     if (home == null || home.trim().isEmpty) return fallback;
-    return '$home${Platform.pathSeparator}Videos${Platform.pathSeparator}YTPlus';
+    return '$home${Platform.pathSeparator}Videos${Platform.pathSeparator}Lumtub';
   }
 
   /// The directory holding ffmpeg among [directories] and `PATH`, or null.
@@ -482,7 +483,7 @@ class DownloadManager extends ChangeNotifier {
     await sidecar.writeAsString(jsonEncode({
       for (final key in _sidecarKeys)
         if (full[key] != null) key: full[key],
-      'ytplus': {
+      'lumtub': {
         'sponsorblock': [for (final s in segments) {'start': s.start.inMilliseconds, 'end': s.end.inMilliseconds, 'category': s.category}],
       },
     }), flush: true);
@@ -501,7 +502,7 @@ class DownloadManager extends ChangeNotifier {
     return null;
   }
 
-  /// Every file YTPlus wrote for [task]: the video, partial data, sidecar
+  /// Every file Lumtub wrote for [task]: the video, partial data, sidecar
   /// and subtitles, which all carry the video id in their name.
   Future<void> _deleteFiles(DownloadTask task) async {
     try {

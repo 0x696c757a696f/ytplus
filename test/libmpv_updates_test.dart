@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/libmpv_updates.dart';
+import 'package:lumtub/libmpv_updates.dart';
 
 void main() {
   const base = LibmpvBuild('20261018', LibmpvBuild.baseVariant);
@@ -53,7 +53,7 @@ void main() {
     late String dll;
 
     setUp(() {
-      dir = Directory.systemTemp.createTempSync('ytplus_mpv');
+      dir = Directory.systemTemp.createTempSync('lumtub_mpv');
       dll = '${dir.path}/20261019-x86_64-v3/libmpv-2.dll';
     });
     tearDown(() => dir.deleteSync(recursive: true));

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/playback_failure.dart';
+import 'package:lumtub/playback_failure.dart';
 
 void main() {
   FailureKind kind(List<String> messages) => PlaybackFailure.classify(messages).kind;

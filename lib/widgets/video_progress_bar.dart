@@ -5,7 +5,7 @@
 //
 // PiliNara: https://github.com/Starfallan/PiliNara
 // Copyright (C) PiliNara contributors.
-// Adapted for YTPlus under the GNU General Public License, version 3 or
+// Adapted for Lumtub under the GNU General Public License, version 3 or
 // later. Changes: rewritten as one self-contained widget without GetX or
 // the audio_video_progress_bar package.
 

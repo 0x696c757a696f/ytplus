@@ -813,7 +813,7 @@ List<SettingEntry> settingEntries(SettingsCategory category, AppController contr
             ), subtitle: tr('缓存位置')),
         SettingEntry(tr('清理缓存'), (context) => NormalItem(
               title: tr('清理缓存'),
-              subtitle: tr('已占用 {0}，只清理 YTPlus 创建的缩略图和临时文件', [formatBytes(controller.cacheBytes)]),
+              subtitle: tr('已占用 {0}，只清理 Lumtub 创建的缩略图和临时文件', [formatBytes(controller.cacheBytes)]),
               leading: _icon(Icons.cleaning_services_outlined),
               onTap: controller.clearCache,
             ), subtitle: tr('缓存占用')),
@@ -866,7 +866,7 @@ TextStyle _note(BuildContext context) => TextStyle(color: context.colors.outline
 
 Future<void> _exportSettings(BuildContext context, AppController controller) async {
   final now = DateTime.now();
-  final name = tr('YTPlus_设置_{0}{1}{2}.json', [now.year, now.month.toString().padLeft(2, '0'), now.day.toString().padLeft(2, '0')]);
+  final name = tr('Lumtub_设置_{0}{1}{2}.json', [now.year, now.month.toString().padLeft(2, '0'), now.day.toString().padLeft(2, '0')]);
   final location = await getSaveLocation(suggestedName: name, acceptedTypeGroups: const [XTypeGroup(label: 'JSON', extensions: ['json'])]);
   if (location == null) return;
   try {
@@ -889,7 +889,7 @@ Future<void> _importSettings(BuildContext context, AppController controller) asy
     return;
   }
   final ok = await controller.importSettings(text);
-  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(ok ? tr('设置已导入') : tr('这不是 YTPlus 导出的设置文件'))));
+  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(ok ? tr('设置已导入') : tr('这不是 Lumtub 导出的设置文件'))));
 }
 
 Future<void> _changeCacheLocation(BuildContext context, AppController controller) async {
@@ -899,7 +899,7 @@ Future<void> _changeCacheLocation(BuildContext context, AppController controller
   if (selected == null || !context.mounted) return;
   await controller.changeCacheLocation(selected, (targetPath) => showDialog<bool>(context: context, builder: (context) => AlertDialog(
     title: Text(tr('迁移现有缓存？')),
-    content: Text(tr('新位置：{0}\n\n只迁移 YTPlus 创建的缩略图、临时文件、yt-dlp 和 mpv 缓存目录。', [targetPath])),
+    content: Text(tr('新位置：{0}\n\n只迁移 Lumtub 创建的缩略图、临时文件、yt-dlp 和 mpv 缓存目录。', [targetPath])),
     actions: [
       TextButton(onPressed: () => Navigator.pop(context, false), child: Text(tr('不迁移'))),
       FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(tr('迁移'))),
@@ -958,7 +958,7 @@ class _DecoderStatusState extends State<_DecoderStatus> {
         _extension(context, 'AV1 Video Extension', info.av1Extension, 'https://apps.microsoft.com/detail/9mvzqvxjbq9v'),
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 12),
-          child: Text(tr('状态只在实际播放对应编码后更新。商店扩展是 Windows Media Foundation 组件，不是 YTPlus 必需的，也不能让不支持的显卡获得硬件解码。'), style: _note(context)),
+          child: Text(tr('状态只在实际播放对应编码后更新。商店扩展是 Windows Media Foundation 组件，不是 Lumtub 必需的，也不能让不支持的显卡获得硬件解码。'), style: _note(context)),
         ),
       ],
     );

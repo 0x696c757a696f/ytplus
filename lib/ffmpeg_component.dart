@@ -5,13 +5,13 @@ import 'dart:typed_data';
 import 'downloads/download_models.dart';
 
 /// The on-demand ffmpeg component: yt-dlp needs ffmpeg and ffprobe to merge a
-/// video stream with an audio stream. YTPlus builds its own in
-/// https://github.com/0x696c757a696f/ytplus-media-builds (download-ffmpeg):
+/// video stream with an audio stream. Lumtub builds its own in
+/// https://github.com/0x696c757a696f/lumtub-media-builds (download-ffmpeg):
 /// LGPL, static, with no codec libraries or hardware decoding, only what
 /// merging and repackaging need, for x86-64, x86-64-v3 and ARM64. Each
 /// archive's BUILD.txt names the FFmpeg source it was built from.
 
-const ffmpegRepository = '0x696c757a696f/ytplus-media-builds';
+const ffmpegRepository = '0x696c757a696f/lumtub-media-builds';
 /// Releases of [ffmpegRepository] holding download builds; the others hold
 /// libmpv.
 const ffmpegReleasePrefix = 'ffmpeg-';

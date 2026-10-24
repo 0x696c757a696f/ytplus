@@ -21,7 +21,7 @@ namespace {
 #define DWMWA_CAPTION_COLOR 35
 #endif
 
-/// YTPlus always uses a dark UI; the title bar matches its background
+/// Lumtub always uses a dark UI; the title bar matches its background
 /// (#101419).
 constexpr COLORREF kCaptionColor = RGB(0x10, 0x14, 0x19);
 

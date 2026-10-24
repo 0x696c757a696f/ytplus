@@ -61,7 +61,7 @@ jobs:
           $ProgressPreference = 'SilentlyContinue'
           $headers = @{
             Accept = 'application/vnd.github+json'
-            'User-Agent' = 'YTPlus-GitHub-Actions'
+            'User-Agent' = 'Lumtub-GitHub-Actions'
             Authorization = "Bearer $env:GITHUB_TOKEN"
           }
           $release = Invoke-RestMethod -Uri 'https://api.github.com/repos/zhongfly/mpv-winbuild/releases/latest' -Headers $headers
@@ -72,7 +72,7 @@ jobs:
           $downloadUri = [uri]$asset.browser_download_url
           if ($downloadUri.Scheme -ne 'https' -or $downloadUri.Host -ne 'github.com') { throw "Unexpected libmpv download host: $downloadUri" }
           $archive = Join-Path $env:RUNNER_TEMP $asset.name
-          $extractDir = Join-Path $env:RUNNER_TEMP 'ytplus-mpv-check'
+          $extractDir = Join-Path $env:RUNNER_TEMP 'lumtub-mpv-check'
           New-Item -ItemType Directory -Force -Path $extractDir | Out-Null
           Invoke-WebRequest -Uri $downloadUri -OutFile $archive -Headers $headers
           $actualHash = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -136,7 +136,7 @@ jobs:
       - name: Windows ARM64 - restore ANGLE
         id: angle-cache
         if: matrix.package_arch == 'arm64'
-        uses: actions/cache@v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ runner.temp }}/angle-arm64
           key: angle-arm64-windows-${{ steps.vcpkg.outputs.commit }}
@@ -174,7 +174,7 @@ jobs:
           $angle = Join-Path $build 'ANGLE'
           New-Item -ItemType Directory -Force -Path (Join-Path $mpv 'include'), (Join-Path $angle 'lib') | Out-Null
 
-          $extractDir = Join-Path $env:RUNNER_TEMP 'ytplus-mpv-check'
+          $extractDir = Join-Path $env:RUNNER_TEMP 'lumtub-mpv-check'
           foreach ($name in 'libmpv-2.dll', 'libmpv.dll.a') {
             $file = Get-ChildItem -LiteralPath $extractDir -Filter $name -File -Recurse | Select-Object -First 1
             if (-not $file) { throw "The aarch64 libmpv archive has no $name." }
@@ -227,15 +227,15 @@ jobs:
           rustup target add $target
           # Each package is built for its own CPU level, as libmpv is.
           if ($env:PACKAGE_ARCH -eq 'x64-v3') { $env:RUSTFLAGS = '-C target-cpu=x86-64-v3' }
-          $manifest = 'native/ytplus_core/Cargo.toml'
+          $manifest = 'native/lumtub_core/Cargo.toml'
           cargo test --manifest-path $manifest --release --target $target
           if ($LASTEXITCODE -ne 0) { throw 'Rust core tests failed.' }
           cargo build --manifest-path $manifest --release --target $target
           if ($LASTEXITCODE -ne 0) { throw 'Rust core build failed.' }
-          $dll = (Resolve-Path "native/ytplus_core/target/$target/release/ytplus_core.dll").Path
-          Write-Host "ytplus_core.dll: $((Get-Item $dll).Length) bytes"
-          # The Dart tests load it from here; packaging copies it next to ytplus.exe.
-          "YTPLUS_CORE_DLL=$dll" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          $dll = (Resolve-Path "native/lumtub_core/target/$target/release/lumtub_core.dll").Path
+          Write-Host "lumtub_core.dll: $((Get-Item $dll).Length) bytes"
+          # The Dart tests load it from here; packaging copies it next to lumtub.exe.
+          "LUMTUB_CORE_DLL=$dll" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
       - name: Windows - run unit tests
         run: flutter test
@@ -250,7 +250,7 @@ jobs:
             version="$base-${GITHUB_SHA::7}"
           fi
           [[ "$version" =~ ^[0-9A-Za-z.+-]+$ ]] || { echo "Unexpected version: $version"; exit 1; }
-          echo "YTPLUS_VERSION=$version" >> "$GITHUB_ENV"
+          echo "LUMTUB_VERSION=$version" >> "$GITHUB_ENV"
           echo "Version $version"
 
       - name: Windows - build release
@@ -258,7 +258,7 @@ jobs:
           GOOGLE_CLIENT_ID: ${{ secrets.YTPLUS_GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.YTPLUS_GOOGLE_CLIENT_SECRET }}
         shell: bash
-        run: flutter build windows --release --dart-define=YTPLUS_VERSION="$YTPLUS_VERSION" --dart-define=YTPLUS_GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID" --dart-define=YTPLUS_GOOGLE_CLIENT_SECRET="$GOOGLE_CLIENT_SECRET"
+        run: flutter build windows --release --dart-define=LUMTUB_VERSION="$LUMTUB_VERSION" --dart-define=LUMTUB_GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID" --dart-define=LUMTUB_GOOGLE_CLIENT_SECRET="$GOOGLE_CLIENT_SECRET"
 
       - name: Windows - check delayed video plugin loading
         shell: pwsh
@@ -269,7 +269,7 @@ jobs:
           $dumpbin = Get-ChildItem -LiteralPath $install -Filter dumpbin.exe -File -Recurse | Select-Object -First 1
           if (-not $dumpbin) { throw 'dumpbin.exe not found.' }
           $releaseDir = Join-Path "build/windows/$env:BUILD_DIR/runner" 'Release'
-          $imports = & $dumpbin.FullName /imports (Join-Path $releaseDir 'ytplus.exe') | Out-String
+          $imports = & $dumpbin.FullName /imports (Join-Path $releaseDir 'lumtub.exe') | Out-String
           $delayed = $imports.IndexOf('Section contains the following delay load imports')
           if ($delayed -lt 0 -or $imports.IndexOf('media_kit_video_plugin.dll', $delayed) -lt 0) { throw 'media_kit_video_plugin.dll is not delay-loaded.' }
           Write-Host 'media_kit_video_plugin.dll is delay-loaded.'
@@ -279,7 +279,7 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          $extractDir = Join-Path $env:RUNNER_TEMP 'ytplus-mpv-check'
+          $extractDir = Join-Path $env:RUNNER_TEMP 'lumtub-mpv-check'
           $library = Get-ChildItem -LiteralPath $extractDir -Filter 'libmpv-2.dll' -File -Recurse | Select-Object -First 1
           if (-not $library) { throw 'Verified libmpv-2.dll is missing.' }
           $releaseDir = Join-Path "build/windows/$env:BUILD_DIR/runner" 'Release'
@@ -298,18 +298,18 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           # Keep the platform in every distributable name. Future platform
-          # jobs use the same YTPlus_<version>_<platform>-<architecture> form.
-          $package = "YTPlus_$env:YTPLUS_VERSION`_windows-$env:PACKAGE_ARCH"
+          # jobs use the same Lumtub_<version>_<platform>-<architecture> form.
+          $package = "Lumtub_$env:LUMTUB_VERSION`_windows-$env:PACKAGE_ARCH"
           $releaseDir = Join-Path "build/windows/$env:BUILD_DIR/runner" 'Release'
           New-Item -ItemType Directory -Force -Path $package | Out-Null
-          Copy-Item -LiteralPath $env:YTPLUS_CORE_DLL -Destination $releaseDir -Force
+          Copy-Item -LiteralPath $env:LUMTUB_CORE_DLL -Destination $releaseDir -Force
           Copy-Item -Recurse -Force "$releaseDir/*" $package
           Copy-Item LICENSE, NOTICE $package
           Compress-Archive -Path "$package/*" -DestinationPath "$package.zip"
           # Only the ZIP carries the marker: the installer is built from the
           # same folder and keeps its data in LocalAppData.
           $marker = Join-Path $env:RUNNER_TEMP 'portable.txt'
-          "YTPlus keeps its settings, cache and logs in the userdata folder next to this file.`r`nDelete this file to keep them in %LOCALAPPDATA%\YTPlus instead.`r`n" | Out-File -FilePath $marker -Encoding ascii -NoNewline
+          "Lumtub keeps its settings, cache and logs in the userdata folder next to this file.`r`nDelete this file to keep them in %LOCALAPPDATA%\Lumtub instead.`r`n" | Out-File -FilePath $marker -Encoding ascii -NoNewline
           Compress-Archive -Update -Path $marker -DestinationPath "$package.zip"
 
       - name: Windows - build installer
@@ -322,23 +322,23 @@ jobs:
             if (-not (Test-Path -LiteralPath $default)) { choco install innosetup -y --no-progress | Out-Null }
             $iscc = Get-Item -LiteralPath $default
           }
-          $source = (Resolve-Path "YTPlus_$env:YTPLUS_VERSION`_windows-$env:PACKAGE_ARCH").Path
+          $source = (Resolve-Path "Lumtub_$env:LUMTUB_VERSION`_windows-$env:PACKAGE_ARCH").Path
           $output = Join-Path (Get-Location) 'installer'
-          & $iscc.Source "/DAppVersion=$env:YTPLUS_VERSION" "/DSourceDir=$source" "/DOutputDir=$output" "/DPackageArch=$env:PACKAGE_ARCH" "/DInstallArch=$env:INSTALL_ARCH" 'windows/installer/ytplus.iss'
+          & $iscc.Source "/DAppVersion=$env:LUMTUB_VERSION" "/DSourceDir=$source" "/DOutputDir=$output" "/DPackageArch=$env:PACKAGE_ARCH" "/DInstallArch=$env:INSTALL_ARCH" 'windows/installer/lumtub.iss'
           if ($LASTEXITCODE -ne 0) { throw 'Inno Setup failed.' }
 
       - name: Windows - upload portable ZIP
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: YTPlus-windows-${{ matrix.package_arch }}-portable
-          path: YTPlus_*_windows-${{ matrix.package_arch }}.zip
+          name: Lumtub-windows-${{ matrix.package_arch }}-portable
+          path: Lumtub_*_windows-${{ matrix.package_arch }}.zip
           if-no-files-found: error
 
       - name: Windows - upload installer
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: YTPlus-windows-${{ matrix.package_arch }}-installer
-          path: installer/YTPlus_*_windows-${{ matrix.package_arch }}-setup.exe
+          name: Lumtub-windows-${{ matrix.package_arch }}-installer
+          path: installer/Lumtub_*_windows-${{ matrix.package_arch }}-setup.exe
           if-no-files-found: error
 
   release:
@@ -357,4 +357,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
-        run: gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --title "YTPlus $TAG" --generate-notes
+        run: gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --title "Lumtub $TAG" --generate-notes

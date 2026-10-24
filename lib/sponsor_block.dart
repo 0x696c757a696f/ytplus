@@ -15,7 +15,7 @@ class SkipSegment {
   bool contains(Duration position) => position >= start && position < end - const Duration(milliseconds: 500);
 }
 
-/// Labels for the categories YTPlus can skip.
+/// Labels for the categories Lumtub can skip.
 final sponsorCategories = {for (final entry in sponsorCategoryNames.entries) entry.key: entry.value.$1};
 
 /// Looks up skip segments from the public SponsorBlock API.
@@ -36,7 +36,7 @@ class SponsorBlock {
 
   Future<List<SkipSegment>> segments(String videoId, [Set<String> categories = PlayerSettings.defaultSponsorCategories]) async {
     if (categories.isEmpty) return const [];
-    final response = await _client.get(requestUri(videoId, categories), headers: {'User-Agent': 'YTPlus-Windows/0.1'}).timeout(const Duration(seconds: 10));
+    final response = await _client.get(requestUri(videoId, categories), headers: {'User-Agent': 'Lumtub-Windows/0.1'}).timeout(const Duration(seconds: 10));
     // 404 means no video with this prefix has segments.
     if (response.statusCode == 404) return const [];
     if (response.statusCode != 200) throw StateError('SponsorBlock HTTP ${response.statusCode}');

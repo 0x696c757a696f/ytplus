@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/community_posts.dart';
-import 'package:ytplus/models.dart';
+import 'package:lumtub/community_posts.dart';
+import 'package:lumtub/models.dart';
 
 Map<String, dynamic> _post(String id, {Map<String, dynamic>? attachment}) => {
       'backstagePostThreadRenderer': {

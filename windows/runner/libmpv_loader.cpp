@@ -130,5 +130,5 @@ void LoadPreferredLibmpv() {
     MarkFailed(directory, path);
     return;
   }
-  ::SetEnvironmentVariableW(L"YTPLUS_LIBMPV", path.c_str());
+  ::SetEnvironmentVariableW(L"LUMTUB_LIBMPV", path.c_str());
 }

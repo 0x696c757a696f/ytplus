@@ -1,4 +1,4 @@
-YTPlus contains settings and player UI adapted from PiliNara.
+Lumtub contains settings and player UI adapted from PiliNara.
 
 PiliNara: https://github.com/Starfallan/PiliNara
 Copyright (C) PiliNara contributors.
@@ -11,7 +11,7 @@ lib/ui/pages/settings_subpages.dart (speed, theme colour, font, log and
 about pages), lib/ui/player_controls.dart (the control layer over the
 video: title and bottom bars, menus and the "more" sheet) and
 lib/widgets/video_progress_bar.dart (the desktop progress bar). Playback
-itself is YTPlus's own media_kit/libmpv code.
+itself is Lumtub's own media_kit/libmpv code.
 
 Noto Sans CJK SC (assets/fonts, from Google Fonts' Noto Sans SC build via
 the @expo-google-fonts/noto-sans-sc 0.4.4 package) is

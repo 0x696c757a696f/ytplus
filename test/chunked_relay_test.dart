@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/chunked_relay.dart';
+import 'package:lumtub/chunked_relay.dart';
 
 void main() {
   late HttpServer upstream;

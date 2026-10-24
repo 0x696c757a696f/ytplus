@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/subtitle_translation.dart';
-import 'package:ytplus/translation.dart';
-import 'package:ytplus/ui/translatable.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/subtitle_translation.dart';
+import 'package:lumtub/translation.dart';
+import 'package:lumtub/ui/translatable.dart';
 
 class _Fake implements Translator {
   int calls = 0;

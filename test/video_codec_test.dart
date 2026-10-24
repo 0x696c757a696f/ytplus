@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/video_codec.dart';
+import 'package:lumtub/video_codec.dart';
 
 void main() {
   test('reads the codec names yt-dlp and relays report', () {

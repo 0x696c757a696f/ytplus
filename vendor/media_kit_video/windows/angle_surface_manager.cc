@@ -69,7 +69,7 @@ void ANGLESurfaceManager::Read() {
   if (d3d_11_device_context_ != nullptr) {
     d3d_11_device_context_->CopyResource(d3d_11_texture_2D_.Get(),
                                          internal_d3d_11_texture_2D_.Get());
-    // YTPlus: Flutter samples |handle_| on its own D3D device as soon as this
+    // Lumtub: Flutter samples |handle_| on its own D3D device as soon as this
     // returns, with nothing ordering it after the copy. A copy still in flight
     // shows up as a black frame, most often at 60 fps or while the UI animates.
     // Wait for it (bounded, so a lost device cannot hang the UI).

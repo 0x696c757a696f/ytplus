@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:ui' show Locale;
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/explore_filters.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/player_settings.dart';
-import 'package:ytplus/video_repository.dart';
-import 'package:ytplus/youtube_related.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/explore_filters.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/player_settings.dart';
+import 'package:lumtub/video_repository.dart';
+import 'package:lumtub/youtube_related.dart';
 
 void main() {
   test('tells a title\'s language from its script and small words', () {

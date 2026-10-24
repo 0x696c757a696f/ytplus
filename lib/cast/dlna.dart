@@ -19,7 +19,7 @@ String ssdpSearchRequest({int mx = 2}) => 'M-SEARCH * HTTP/1.1\r\n'
     'MAN: "ssdp:discover"\r\n'
     'MX: $mx\r\n'
     'ST: $mediaRendererType\r\n'
-    'USER-AGENT: YTPlus UPnP/1.1\r\n\r\n';
+    'USER-AGENT: Lumtub UPnP/1.1\r\n\r\n';
 
 /// The fields of an SSDP reply that matter here.
 class SsdpResponse {

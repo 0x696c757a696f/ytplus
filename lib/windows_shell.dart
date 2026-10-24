@@ -17,7 +17,7 @@ class WindowsShell {
     _channel.setMethodCallHandler(_onCall);
   }
 
-  static const channelName = 'ytplus/windows_shell';
+  static const channelName = 'lumtub/windows_shell';
 
   /// DirectWrite family names installed for the current Windows user.
   /// A missing or older native runner simply leaves the Settings list empty.

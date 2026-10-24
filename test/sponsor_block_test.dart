@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/sponsor_block.dart';
+import 'package:lumtub/sponsor_block.dart';
 
 void main() {
   test('sends only a short hash prefix of the video id', () {

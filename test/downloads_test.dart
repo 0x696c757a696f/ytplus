@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/video_codec.dart';
-import 'package:ytplus/downloads/download_manager.dart';
-import 'package:ytplus/downloads/download_models.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/sponsor_block.dart';
+import 'package:lumtub/video_codec.dart';
+import 'package:lumtub/downloads/download_manager.dart';
+import 'package:lumtub/downloads/download_models.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/sponsor_block.dart';
 
 class FakeProcess implements Process {
   final _stdout = StreamController<List<int>>();
@@ -47,7 +47,7 @@ VideoItem video(String id) => VideoItem(id: id, title: 'Video $id', channel: 'Ch
 void main() {
   group('progress lines', () {
     test('parses bytes, speed and eta', () {
-      final p = DownloadProgress.parse('ytplus|downloading|524288|1048576|NA|2097152.5|12')!;
+      final p = DownloadProgress.parse('lumtub|downloading|524288|1048576|NA|2097152.5|12')!;
       expect(p.downloaded, 524288);
       expect(p.total, 1048576);
       expect(p.speed, 2097152.5);
@@ -57,18 +57,18 @@ void main() {
     });
 
     test('falls back to the estimated total and tolerates NA', () {
-      final p = DownloadProgress.parse('ytplus|downloading|1000|NA|4000|NA|NA')!;
+      final p = DownloadProgress.parse('lumtub|downloading|1000|NA|4000|NA|NA')!;
       expect(p.total, 4000);
       expect(p.speed, isNull);
       expect(p.eta, isNull);
-      expect(DownloadProgress.parse('ytplus|finished|100|100|NA|NA|NA')!.finished, isTrue);
-      expect(DownloadProgress.parse('ytplus|downloading|NA|NA|NA|NA|NA')!.fraction, isNull);
+      expect(DownloadProgress.parse('lumtub|finished|100|100|NA|NA|NA')!.finished, isTrue);
+      expect(DownloadProgress.parse('lumtub|downloading|NA|NA|NA|NA|NA')!.fraction, isNull);
     });
 
     test('ignores other output and finds the printed file', () {
       expect(DownloadProgress.parse('[download] 5%'), isNull);
-      expect(DownloadProgress.parse('ytplus|downloading|1'), isNull);
-      expect(DownloadProgress.parseFile(r'ytplus-file|C:\Videos\a [x].mp4'), r'C:\Videos\a [x].mp4');
+      expect(DownloadProgress.parse('lumtub|downloading|1'), isNull);
+      expect(DownloadProgress.parseFile(r'lumtub-file|C:\Videos\a [x].mp4'), r'C:\Videos\a [x].mp4');
       expect(DownloadProgress.parseFile('something else'), isNull);
     });
   });
@@ -91,7 +91,7 @@ void main() {
     late Map<String, String> lastEnvironment;
 
     setUp(() async {
-      dir = await Directory.systemTemp.createTemp('ytplus_downloads');
+      dir = await Directory.systemTemp.createTemp('lumtub_downloads');
       processes = [];
       started = [];
       lastEnvironment = {};
@@ -169,12 +169,12 @@ void main() {
         'formats': List.generate(50, (i) => {'url': 'https://x/$i'}),
       }));
       File('${dir.path}/videos/Video [aaaaaaaaaaa].en.vtt').writeAsStringSync('WEBVTT');
-      processes[0].out('ytplus|downloading|500|1000|NA|250.0|2');
+      processes[0].out('lumtub|downloading|500|1000|NA|250.0|2');
       await settle();
       final task = m.taskFor('aaaaaaaaaaa')!;
       expect(task.fraction, 0.5);
       expect(task.speed, 250.0);
-      processes[0].out('ytplus-file|${file.path}');
+      processes[0].out('lumtub-file|${file.path}');
       await processes[0].exit(0);
       await settle();
       expect(task.status, DownloadStatus.done);
@@ -196,7 +196,7 @@ void main() {
       m.add(video('aaaaaaaaaaa'), DownloadQuality.best);
       await settle();
       final file = File('${dir.path}/videos/x [aaaaaaaaaaa].mp4')..createSync(recursive: true);
-      processes[0].out('ytplus-file|${file.path}');
+      processes[0].out('lumtub-file|${file.path}');
       await processes[0].exit(0);
       await settle();
       expect(m.localVideo('aaaaaaaaaaa'), isNotNull);
@@ -270,7 +270,7 @@ void main() {
       m.addListener(() => managerNotified++);
       m.progress.addListener(() => ticks++);
       for (var i = 0; i < 20; i++) {
-        processes[0].out('ytplus|downloading|${i * 10}|1000|NA|250.0|2');
+        processes[0].out('lumtub|downloading|${i * 10}|1000|NA|250.0|2');
         await Future<void>.delayed(const Duration(milliseconds: 10));
       }
       await settle();
@@ -300,7 +300,7 @@ void main() {
       final file = File('${dir.path}/chosen/a [aaaaaaaaaaa].m4a')..createSync(recursive: true);
       // The two downloads may start in either order.
       final a = processes[started.indexWhere((args) => args.last.endsWith('aaaaaaaaaaa'))];
-      a.out('ytplus-file|${file.path}');
+      a.out('lumtub-file|${file.path}');
       await a.exit(0);
       await settle();
       expect(processes, hasLength(2));
@@ -327,7 +327,7 @@ void main() {
       await settle();
       final file = File('${dir.path}/videos/a [aaaaaaaaaaa].mp4')..createSync(recursive: true);
       final other = File('${dir.path}/videos/b [bbbbbbbbbbb].mp4')..createSync();
-      processes[0].out('ytplus-file|${file.path}');
+      processes[0].out('lumtub-file|${file.path}');
       await processes[0].exit(0);
       await settle();
       await m.remove('aaaaaaaaaaa', deleteFiles: true);
@@ -346,8 +346,8 @@ void main() {
     });
   });
 
-  test('the default folder is Videos/YTPlus, else a fallback', () {
-    expect(DownloadManager.defaultDirectoryFor({'USERPROFILE': 'C:/Users/me'}, 'F'), endsWith('Videos${Platform.pathSeparator}YTPlus'));
+  test('the default folder is Videos/Lumtub, else a fallback', () {
+    expect(DownloadManager.defaultDirectoryFor({'USERPROFILE': 'C:/Users/me'}, 'F'), endsWith('Videos${Platform.pathSeparator}Lumtub'));
     expect(DownloadManager.defaultDirectoryFor({}, 'F'), 'F');
   });
 }

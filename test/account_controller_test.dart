@@ -5,13 +5,13 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/app/account_controller.dart';
-import 'package:ytplus/app/library_controller.dart';
-import 'package:ytplus/google_auth.dart';
-import 'package:ytplus/library_store.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/youtube_account.dart';
-import 'package:ytplus/secure_store.dart';
+import 'package:lumtub/app/account_controller.dart';
+import 'package:lumtub/app/library_controller.dart';
+import 'package:lumtub/google_auth.dart';
+import 'package:lumtub/library_store.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/youtube_account.dart';
+import 'package:lumtub/secure_store.dart';
 
 /// Stands in for DPAPI off Windows; it only has to round-trip.
 class _XorProtector implements SecretProtector {
@@ -29,7 +29,7 @@ void main() {
   var revokedTokens = <String>[];
 
   setUp(() async {
-    dir = await Directory.systemTemp.createTemp('ytplus_account');
+    dir = await Directory.systemTemp.createTemp('lumtub_account');
     library = LibraryController(LibraryStore(File('${dir.path}/library.json')));
     requests.clear();
     writes.clear();

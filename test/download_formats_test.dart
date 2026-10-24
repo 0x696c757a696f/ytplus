@@ -4,13 +4,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/downloads/download_formats.dart';
-import 'package:ytplus/downloads/download_manager.dart';
-import 'package:ytplus/downloads/download_models.dart';
-import 'package:ytplus/downloads/download_selection.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/ui/download_dialog.dart';
-import 'package:ytplus/video_codec.dart';
+import 'package:lumtub/downloads/download_formats.dart';
+import 'package:lumtub/downloads/download_manager.dart';
+import 'package:lumtub/downloads/download_models.dart';
+import 'package:lumtub/downloads/download_selection.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/ui/download_dialog.dart';
+import 'package:lumtub/video_codec.dart';
 
 Map<String, dynamic> v(String id, String vcodec, int height, String ext, {double fps = 30, double tbr = 1000, int? size, String? range}) => {
       'format_id': id, 'vcodec': vcodec, 'acodec': 'none', 'height': height, 'fps': fps, 'ext': ext, 'tbr': tbr, 'url': 'http://x/$id', 'protocol': 'https',
@@ -197,7 +197,7 @@ void main() {
 
   group('download task', () {
     late Directory dir;
-    setUp(() async => dir = await Directory.systemTemp.createTemp('ytplus_dl_formats'));
+    setUp(() async => dir = await Directory.systemTemp.createTemp('lumtub_dl_formats'));
     tearDown(() async {
       for (var i = 0; ; i++) {
         try {

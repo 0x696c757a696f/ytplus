@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/ui/pages/settings_page.dart';
-import 'package:ytplus/ui/pages/settings_sections.dart';
-import 'package:ytplus/ui/pages/settings_subpages.dart';
-import 'package:ytplus/ui/theme.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/ui/pages/settings_page.dart';
+import 'package:lumtub/ui/pages/settings_sections.dart';
+import 'package:lumtub/ui/pages/settings_subpages.dart';
+import 'package:lumtub/ui/theme.dart';
 
 void main() {
   late AppController controller;

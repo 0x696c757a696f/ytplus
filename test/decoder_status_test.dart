@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/decoder_status.dart';
+import 'package:lumtub/decoder_status.dart';
 
 void main() {
   test('libmpv reports no hardware decoder as software decoding', () {

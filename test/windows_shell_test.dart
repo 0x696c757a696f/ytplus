@@ -1,9 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/windows_shell.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/windows_shell.dart';
 
 VideoItem _video(String id) => VideoItem(id: id, title: 'T $id', channel: 'C $id', url: 'https://www.youtube.com/watch?v=$id');
 

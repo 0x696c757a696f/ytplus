@@ -4,8 +4,8 @@
 //
 // PiliNara: https://github.com/Starfallan/PiliNara
 // Copyright (C) PiliNara contributors.
-// Adapted for YTPlus under the GNU General Public License, version 3 or
-// later. Changes: the pages read and save YTPlus's settings through
+// Adapted for Lumtub under the GNU General Public License, version 3 or
+// later. Changes: the pages read and save Lumtub's settings through
 // AppController instead of PiliNara's storage, GetX and SmartDialog are
 // removed, and the Bilibili-only options (danmaku, long-press speed,
 // dynamic colour on Android) are dropped or replaced by Windows ones.
@@ -28,7 +28,7 @@ import '../theme.dart';
 import 'settings_sections.dart';
 import '../../l10n/l10n.dart';
 
-const _repository = 'https://github.com/0x696c757a696f/ytplus';
+const _repository = 'https://github.com/0x696c757a696f/lumtub';
 
 /// Pushes a sub-page that rebuilds whenever [controller] changes.
 Future<void> _push(BuildContext context, AppController controller, String title, List<Widget> Function(BuildContext context) children, {List<Widget>? actions}) =>
@@ -656,14 +656,14 @@ class _FontSettingsPageState extends State<_FontSettingsPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text(tr('YTPlus 让 YouTube 在 Windows 上更好用'), style: theme.textTheme.titleLarge),
+                    Text(tr('Lumtub 让 YouTube 在 Windows 上更好用'), style: theme.textTheme.titleLarge),
                     const SizedBox(height: 6),
                     Text('The quick brown fox jumps over the lazy dog. 0123456789', style: theme.textTheme.bodyMedium),
                     const SizedBox(height: 6),
                     Text(tr('频道名称 · 12 万次观看 · 3 天前'), style: theme.textTheme.labelMedium!.copyWith(color: context.colors.outline)),
                   ]),
                 ),
-                _tip(context, tr('Noto Sans CJK SC 随 YTPlus 安装；系统字体从当前 Windows 用户的字体集合读取。')),
+                _tip(context, tr('Noto Sans CJK SC 随 Lumtub 安装；系统字体从当前 Windows 用户的字体集合读取。')),
               ]),
             );
           },
@@ -813,7 +813,7 @@ Future<void> openComponents(BuildContext context, AppController controller) => _
           onTap: controller.checkUpdates,
         ),
         _tip(context, tr('新 libmpv 出错时会自动改回内置版本。yt-dlp 更新后若无法播放，可以回退到上一版。')),
-        _tip(context, tr('ffmpeg 是可选组件，只用于合并高画质视频和音频，不会自动下载。它是 YTPlus 自建的 LGPL 精简构建（https://github.com/0x696c757a696f/ytplus-media-builds），包内 BUILD.txt 写明所用的 FFmpeg 源代码。')),
+        _tip(context, tr('ffmpeg 是可选组件，只用于合并高画质视频和音频，不会自动下载。它是 Lumtub 自建的 LGPL 精简构建（https://github.com/0x696c757a696f/lumtub-media-builds），包内 BUILD.txt 写明所用的 FFmpeg 源代码。')),
       ];
     });
 
@@ -825,7 +825,7 @@ List<SettingEntry> aboutEntries(AppController controller) => [
             child: Column(children: [
               Icon(Icons.smart_display_rounded, size: 72, color: context.colors.primary),
               const SizedBox(height: 4),
-              Text('YTPlus', style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 2)),
+              Text('Lumtub', style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 2)),
               Text(tr('使用 Flutter 和 mpv 开发的 YouTube 第三方客户端'), style: TextStyle(color: context.colors.outline)),
               const SizedBox(height: 8),
               ListTile(
@@ -855,7 +855,7 @@ List<SettingEntry> aboutEntries(AppController controller) => [
           ), subtitle: tr('发布页 新版本')),
       SettingEntry(tr('源代码'), (context) => NormalItem(
             title: tr('Github 仓库'),
-            subtitle: 'github.com/0x696c757a696f/ytplus',
+            subtitle: 'github.com/0x696c757a696f/lumtub',
             leading: const Icon(Icons.code_rounded),
             onTap: () => openExternal(_repository),
           ), subtitle: tr('GitHub 源代码')),
@@ -881,7 +881,7 @@ List<SettingEntry> aboutEntries(AppController controller) => [
             title: tr('开源许可'),
             subtitle: tr('GPLv3；部分界面改编自 PiliNara，播放基于 mpv、media_kit 和 yt-dlp'),
             leading: const Icon(Icons.gavel_rounded),
-            onTap: () => showLicensePage(context: context, applicationName: 'YTPlus', applicationVersion: appVersion),
+            onTap: () => showLicensePage(context: context, applicationName: 'Lumtub', applicationVersion: appVersion),
           ), subtitle: 'PiliNara mpv media_kit yt-dlp license'),
     ];
 
@@ -912,7 +912,7 @@ class _LogsPageState extends State<_LogsPage> {
 
   Future<void> _load() async {
     final parts = <String>[];
-    for (final name in const ['ytplus.old.log', 'ytplus.log']) {
+    for (final name in const ['lumtub.old.log', 'lumtub.log']) {
       try {
         final file = _file(name);
         if (file != null && await file.exists()) parts.add(await file.readAsString());
@@ -924,8 +924,8 @@ class _LogsPageState extends State<_LogsPage> {
   }
 
   Future<void> _clear() async {
-    if (!await confirmDialog(context, title: tr('清空日志？'), content: tr('删除本机保存的 YTPlus 日志。'), confirm: tr('清空'))) return;
-    for (final name in const ['ytplus.old.log', 'ytplus.log']) {
+    if (!await confirmDialog(context, title: tr('清空日志？'), content: tr('删除本机保存的 Lumtub 日志。'), confirm: tr('清空'))) return;
+    for (final name in const ['lumtub.old.log', 'lumtub.log']) {
       try {
         final file = _file(name);
         if (file != null && await file.exists()) await file.writeAsString('');

@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/library_store.dart';
-import 'package:ytplus/models.dart';
+import 'package:lumtub/library_store.dart';
+import 'package:lumtub/models.dart';
 
 void main() {
   const channel = ChannelRef('UCuAXFkgsw1L7xaCfnd5JJOw', 'Rick Astley');
@@ -10,7 +10,7 @@ void main() {
   const other = VideoItem(id: 'aaaaaaaaaaa', title: 'Other', channel: '', url: 'https://www.youtube.com/watch?v=aaaaaaaaaaa');
 
   late Directory dir;
-  setUp(() async => dir = await Directory.systemTemp.createTemp('ytplus_library'));
+  setUp(() async => dir = await Directory.systemTemp.createTemp('lumtub_library'));
   tearDown(() => dir.delete(recursive: true));
 
   LibraryStore store() => LibraryStore(File('${dir.path}/library.json'));

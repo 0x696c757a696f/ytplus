@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 import 'package:http/http.dart' as http;
 
-/// Loads a thumbnail from YTPlus's `thumbnails` cache folder, downloading it
+/// Loads a thumbnail from Lumtub's `thumbnails` cache folder, downloading it
 /// there on first use. Scrolling back or reopening the app then needs no
 /// network request.
 @immutable

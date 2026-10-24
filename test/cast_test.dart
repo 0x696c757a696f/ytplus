@@ -3,16 +3,16 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/cast/cast_controller.dart';
-import 'package:ytplus/cast/cast_device.dart';
-import 'package:ytplus/cast/cast_stream.dart';
-import 'package:ytplus/cast/chromecast.dart';
-import 'package:ytplus/cast/dlna.dart';
-import 'package:ytplus/cast/mdns.dart';
-import 'package:ytplus/invidious_streams.dart';
-import 'package:ytplus/piped_streams.dart';
-import 'package:ytplus/player_settings.dart';
-import 'package:ytplus/video_codec.dart';
+import 'package:lumtub/cast/cast_controller.dart';
+import 'package:lumtub/cast/cast_device.dart';
+import 'package:lumtub/cast/cast_stream.dart';
+import 'package:lumtub/cast/chromecast.dart';
+import 'package:lumtub/cast/dlna.dart';
+import 'package:lumtub/cast/mdns.dart';
+import 'package:lumtub/invidious_streams.dart';
+import 'package:lumtub/piped_streams.dart';
+import 'package:lumtub/player_settings.dart';
+import 'package:lumtub/video_codec.dart';
 
 const _description = '''<?xml version="1.0"?>
 <root xmlns="urn:schemas-upnp-org:device-1-0"><specVersion><major>1</major><minor>0</minor></specVersion>

@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/ui/video_texture_size.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/ui/video_texture_size.dart';
 
 void main() {
   group('Chapter', () {

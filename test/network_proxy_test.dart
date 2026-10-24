@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/network_proxy.dart';
-import 'package:ytplus/player_option_applicator.dart';
-import 'package:ytplus/player_settings.dart';
-import 'package:ytplus/stream_resolver.dart';
+import 'package:lumtub/network_proxy.dart';
+import 'package:lumtub/player_option_applicator.dart';
+import 'package:lumtub/player_settings.dart';
+import 'package:lumtub/stream_resolver.dart';
 
 void main() {
   test('reads the Windows proxy as proxy tools write it', () {

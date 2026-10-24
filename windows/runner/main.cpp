@@ -29,7 +29,7 @@ LONG WINAPI WriteCrashDump(EXCEPTION_POINTERS* exception) {
   SYSTEMTIME now{};
   ::GetLocalTime(&now);
   wchar_t name[96]{};
-  swprintf_s(name, _countof(name), L"\\ytplus-crash-%04u%02u%02u-%02u%02u%02u.dmp",
+  swprintf_s(name, _countof(name), L"\\lumtub-crash-%04u%02u%02u-%02u%02u%02u.dmp",
              now.wYear, now.wMonth, now.wDay, now.wHour, now.wMinute,
              now.wSecond);
   const HANDLE file = ::CreateFileW((logs + name).c_str(), GENERIC_WRITE, 0,
@@ -101,7 +101,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   const int top = static_cast<int>(work_area.top / scale_factor) + std::max((work_height - height) / 2, 0);
   Win32Window::Point origin(static_cast<unsigned int>(left), static_cast<unsigned int>(top));
   Win32Window::Size size(static_cast<unsigned int>(width), static_cast<unsigned int>(height));
-  if (!window.Create(L"YTPlus", origin, size)) {
+  if (!window.Create(L"Lumtub", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetStartMaximized(RestoreWindowPlacement(window.GetHandle()));

@@ -2,11 +2,11 @@
 cmake_minimum_required(VERSION 3.14)
 # media_kit's plugin CMake files emit developer warnings on current CMake.
 set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE BOOL "" FORCE)
-project(ytplus LANGUAGES CXX)
+project(lumtub LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "ytplus")
+set(BINARY_NAME "lumtub")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

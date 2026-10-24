@@ -26,7 +26,7 @@ class LiveChatRepository {
   final Map<String, String>? _environment;
 
   Directory get directory => Directory(cacheDirectory == null
-      ? '${Directory.systemTemp.path}${Platform.pathSeparator}ytplus-live-chat'
+      ? '${Directory.systemTemp.path}${Platform.pathSeparator}lumtub-live-chat'
       : '${cacheDirectory!}${Platform.pathSeparator}live-chat');
 
   File fileFor(String videoId) => File('${directory.path}${Platform.pathSeparator}$videoId.live_chat.json');

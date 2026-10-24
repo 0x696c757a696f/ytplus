@@ -1,9 +1,9 @@
 [package]
-name = "ytplus_core"
+name = "lumtub_core"
 version = "0.1.0"
 edition = "2024"
 license = "GPL-3.0-or-later"
-description = "Native helpers YTPlus calls through dart:ffi"
+description = "Native helpers Lumtub calls through dart:ffi"
 publish = false
 
 [lib]

@@ -103,7 +103,7 @@ class SubtitleViewState extends State<SubtitleView> {
             alignment: Alignment.bottomCenter,
             child: Text(
               [
-                // YTPlus: the secondary subtitle goes above the main one.
+                // Lumtub: the secondary subtitle goes above the main one.
                 for (final line in subtitle.reversed)
                   if (line.trim().isNotEmpty) line.trim(),
               ].join('\n'),

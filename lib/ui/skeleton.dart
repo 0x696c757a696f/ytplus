@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// Shimmer for loading placeholders, adapted from PiliNara's Skeleton.
 ///
 /// Copyright (C) PiliNara contributors.
-/// Adapted for YTPlus under GPL-3.0-or-later. Wrap a whole placeholder grid in
+/// Adapted for Lumtub under GPL-3.0-or-later. Wrap a whole placeholder grid in
 /// one Skeleton so a single animation drives every card.
 class Skeleton extends StatefulWidget {
   const Skeleton({super.key, required this.child});

@@ -5,8 +5,8 @@
 //
 // PiliNara: https://github.com/Starfallan/PiliNara
 // Copyright (C) PiliNara contributors.
-// Adapted for YTPlus under the GNU General Public License, version 3 or
-// later. Changes: the controls drive media_kit through YTPlus's
+// Adapted for Lumtub under the GNU General Public License, version 3 or
+// later. Changes: the controls drive media_kit through Lumtub's
 // AppController instead of PiliNara's PlPlayerController and GetX; touch
 // gestures, danmaku and Bilibili-only buttons are left out, and desktop
 // mouse handling (hover to show, wheel for volume) is kept.
@@ -706,7 +706,7 @@ class _PlayerControlsState extends State<PlayerControls> with SingleTickerProvid
             }),
             item(Icons.subtitles_outlined, tr('字幕设置'), '${settings.subtitleMode.label} · ${settings.subtitleLanguage.label}', () => openSubtitleSettings(context, _controller)),
             item(Icons.tune_rounded, tr('画面与音画同步调节'), null, () => openPictureSettings(context, _controller)),
-            item(Icons.photo_camera_outlined, tr('截图 (S)'), tr('保存到“图片\\YTPlus”并复制'), () => unawaited(captureScreenshot(context, _controller, onFeedback: _showFeedback))),
+            item(Icons.photo_camera_outlined, tr('截图 (S)'), tr('保存到“图片\\Lumtub”并复制'), () => unawaited(captureScreenshot(context, _controller, onFeedback: _showFeedback))),
             item(Icons.flip_rounded, tr('镜像翻转'), _transform.mirrored ? tr('已开启') : tr('未开启'), () => unawaited(_transform.setMirrored(!_transform.mirrored))),
             item(Icons.zoom_in_rounded, tr('画面缩放'), _transform.zoom == 1 ? tr('原始大小') : '${trimSpeed(_transform.zoom)}x', () {
               pickFromDialog<double>(

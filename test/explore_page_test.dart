@@ -2,17 +2,17 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/blocked_groups.dart';
-import 'package:ytplus/explore_filters.dart';
-import 'package:ytplus/explore_topics.dart';
-import 'package:ytplus/faith_topics.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/recommendations.dart';
-import 'package:ytplus/search_options.dart';
-import 'package:ytplus/state_media.dart';
-import 'package:ytplus/ui/pages/explore_page.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/blocked_groups.dart';
+import 'package:lumtub/explore_filters.dart';
+import 'package:lumtub/explore_topics.dart';
+import 'package:lumtub/faith_topics.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/recommendations.dart';
+import 'package:lumtub/search_options.dart';
+import 'package:lumtub/state_media.dart';
+import 'package:lumtub/ui/pages/explore_page.dart';
 
 /// Narrower than [ExplorePage.wideLayout], so zones are in a row on top.
 Future<AppController> _open(WidgetTester tester, {double width = 950}) async {

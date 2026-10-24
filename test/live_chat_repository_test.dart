@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/live_chat_repository.dart';
+import 'package:lumtub/live_chat_repository.dart';
 
 void main() {
   test('uses the configured cache and yt-dlp conventions for replay', () {

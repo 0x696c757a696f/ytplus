@@ -394,7 +394,7 @@ packages:
       path: "vendor/media_kit_video"
       relative: true
     source: path
-    version: "2.0.1+ytplus.1"
+    version: "2.0.1+lumtub.1"
   meta:
     dependency: transitive
     description:

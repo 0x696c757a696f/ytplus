@@ -275,7 +275,7 @@ void VideoOutput::Resize(int64_t required_width, int64_t required_height) {
   // Unregister previously registered texture & delete underlying objects.
   if (texture_id_) {
     UnregisterTexture(texture_id_);
-    // YTPlus: under the lock, so Flutter's texture callback sees 0 and
+    // Lumtub: under the lock, so Flutter's texture callback sees 0 and
     // returns no frame instead of reading the textures freed below.
     std::lock_guard<std::mutex> lock(textures_mutex_);
     texture_id_ = 0;
@@ -285,7 +285,7 @@ void VideoOutput::Resize(int64_t required_width, int64_t required_height) {
     // Destroy internal ID3D11Texture2D & EGLSurface & create new with updated
     // dimensions while preserving previous EGLDisplay & EGLContext.
     {
-      // YTPlus: Flutter's raster thread copies from these textures in
+      // Lumtub: Flutter's raster thread copies from these textures in
       // |Read|; freeing them meanwhile crashed the app.
       std::lock_guard<std::mutex> lock(textures_mutex_);
       surface_manager_->SetSize(static_cast<int32_t>(required_width),
@@ -303,7 +303,7 @@ void VideoOutput::Resize(int64_t required_width, int64_t required_height) {
         std::make_unique<flutter::TextureVariant>(flutter::GpuSurfaceTexture(
             kFlutterDesktopGpuSurfaceTypeDxgiSharedHandle, [&](auto, auto) {
               std::lock_guard<std::mutex> lock(textures_mutex_);
-              // YTPlus: find, not at(). Between registering a texture and
+              // Lumtub: find, not at(). Between registering a texture and
               // storing its descriptor, at() threw and ended the app.
               auto it = textures_.find(texture_id_);
               if (texture_id_ && it != textures_.end()) {

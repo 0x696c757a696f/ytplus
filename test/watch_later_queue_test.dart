@@ -3,19 +3,19 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app/library_controller.dart';
-import 'package:ytplus/app_directories.dart';
-import 'package:ytplus/app_preferences.dart';
-import 'package:ytplus/library_store.dart';
-import 'package:ytplus/models.dart';
-import 'package:ytplus/play_queue.dart';
-import 'package:ytplus/ui/pages/history_page.dart';
-import 'package:ytplus/ui/pages/library_pages.dart';
-import 'package:ytplus/ui/play_queue_panel.dart';
-import 'package:ytplus/ui/theme.dart';
-import 'package:ytplus/ui/video_card.dart';
-import 'package:ytplus/video_repository.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app/library_controller.dart';
+import 'package:lumtub/app_directories.dart';
+import 'package:lumtub/app_preferences.dart';
+import 'package:lumtub/library_store.dart';
+import 'package:lumtub/models.dart';
+import 'package:lumtub/play_queue.dart';
+import 'package:lumtub/ui/pages/history_page.dart';
+import 'package:lumtub/ui/pages/library_pages.dart';
+import 'package:lumtub/ui/play_queue_panel.dart';
+import 'package:lumtub/ui/theme.dart';
+import 'package:lumtub/ui/video_card.dart';
+import 'package:lumtub/video_repository.dart';
 
 void main() {
   final videos = [
@@ -29,7 +29,7 @@ void main() {
   late AppController controller;
 
   setUp(() {
-    dir = Directory.systemTemp.createTempSync('ytplus_later');
+    dir = Directory.systemTemp.createTempSync('lumtub_later');
     addTearDown(() => dir.deleteSync(recursive: true));
     store = LibraryStore(File('${dir.path}/library.json'));
     library = LibraryController(store);

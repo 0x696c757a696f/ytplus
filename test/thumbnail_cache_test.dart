@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/thumbnail_cache.dart';
+import 'package:lumtub/thumbnail_cache.dart';
 
 void main() {
   test('cache files are named after the video id', () {

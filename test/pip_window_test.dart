@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
-import 'package:ytplus/app_window.dart';
+import 'package:lumtub/app/app_controller.dart';
+import 'package:lumtub/app_window.dart';
 
 void main() {
   test('picture in picture is 280 on its short side and keeps the ratio', () {

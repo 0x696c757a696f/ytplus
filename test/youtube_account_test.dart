@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:ytplus/youtube_account.dart';
+import 'package:lumtub/youtube_account.dart';
 
 void main() {
   test('pages through subscriptions with the access token', () async {

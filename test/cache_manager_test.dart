@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app_directories.dart';
-import 'package:ytplus/cache_manager.dart';
-import 'package:ytplus/player_settings.dart';
+import 'package:lumtub/app_directories.dart';
+import 'package:lumtub/cache_manager.dart';
+import 'package:lumtub/player_settings.dart';
 
 void main() {
-  test('clear removes only YTPlus-managed cache folders', () async {
-    final temp = await Directory.systemTemp.createTemp('ytplus-cache-test-');
+  test('clear removes only Lumtub-managed cache folders', () async {
+    final temp = await Directory.systemTemp.createTemp('lumtub-cache-test-');
     addTearDown(() => temp.delete(recursive: true));
     final manager = CacheManager(AppDirectories.at(Directory('${temp.path}${Platform.pathSeparator}app')));
     const settings = PlayerSettings();
@@ -41,7 +41,7 @@ void main() {
     String sub(PlayerSettings s, String name, [String file = '']) => '${manager.rootFor(s).path}${Platform.pathSeparator}$name$file';
 
     setUp(() async {
-      temp = await Directory.systemTemp.createTemp('ytplus-migrate-test-');
+      temp = await Directory.systemTemp.createTemp('lumtub-migrate-test-');
       addTearDown(() => temp.delete(recursive: true));
       manager = CacheManager(AppDirectories.at(Directory('${temp.path}${Platform.pathSeparator}app')));
       from = const PlayerSettings();

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/app_controller.dart';
+import 'package:lumtub/app/app_controller.dart';
 
 void main() {
   test('accepts watch, short and shorts links', () {

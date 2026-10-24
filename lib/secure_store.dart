@@ -18,6 +18,7 @@ class DpapiProtector implements SecretProtector {
   static const _uiForbidden = 0x1;
   // Mixed into the key so other programs calling DPAPI for this user cannot
   // decrypt the file without also knowing this value.
+  // The app's earlier name; changing it would make saved sign-ins unreadable.
   static final _entropy = utf8.encode('YTPlus account v1');
 
   @override

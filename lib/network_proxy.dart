@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'l10n/l10n.dart';
 
-/// Where YTPlus sends its network traffic: yt-dlp, libmpv's video streams
+/// Where Lumtub sends its network traffic: yt-dlp, libmpv's video streams
 /// and the app's own requests all go the same way.
 enum ProxyMode {
   /// The proxy set in Windows (as Clash, v2rayN and similar tools set it),

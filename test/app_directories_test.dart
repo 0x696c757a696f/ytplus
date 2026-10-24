@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app_directories.dart';
+import 'package:lumtub/app_directories.dart';
 
 void main() {
   test('creates the complete application directory tree without deleting data', () async {
-    final root = await Directory.systemTemp.createTemp('ytplus-directories-test-');
+    final root = await Directory.systemTemp.createTemp('lumtub-directories-test-');
     addTearDown(() => root.delete(recursive: true));
-    final directories = AppDirectories.at(Directory('${root.path}${Platform.pathSeparator}YTPlus'));
+    final directories = AppDirectories.at(Directory('${root.path}${Platform.pathSeparator}Lumtub'));
 
     await directories.ensureExists();
     final keep = File('${directories.data.path}${Platform.pathSeparator}keep.json');
@@ -23,13 +23,13 @@ void main() {
   });
 
   test('uses the folder the runner chose, else LocalAppData', () async {
-    final temp = await Directory.systemTemp.createTemp('ytplus_dirs');
+    final temp = await Directory.systemTemp.createTemp('lumtub_dirs');
     addTearDown(() => temp.delete(recursive: true));
     final sep = Platform.pathSeparator;
-    final portable = await AppDirectories.create(environment: {'YTPLUS_HOME': '${temp.path}${sep}userdata', 'LOCALAPPDATA': '${temp.path}${sep}local'});
+    final portable = await AppDirectories.create(environment: {'LUMTUB_HOME': '${temp.path}${sep}userdata', 'LOCALAPPDATA': '${temp.path}${sep}local'});
     expect(portable.logs.path, '${temp.path}${sep}userdata${sep}logs');
     expect(portable.logs.existsSync(), isTrue);
     final installed = await AppDirectories.create(environment: {'LOCALAPPDATA': '${temp.path}${sep}local'});
-    expect(installed.root.path, '${temp.path}${sep}local${sep}YTPlus');
+    expect(installed.root.path, '${temp.path}${sep}local${sep}Lumtub');
   });
 }

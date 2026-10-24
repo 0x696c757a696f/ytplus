@@ -63,17 +63,17 @@ function(check_directory_exists_and_not_empty dir result_var)
   endif()
 endfunction()
 
-# YTPlus: media_kit only publishes x64 libmpv and ANGLE. An ARM64 build
+# Lumtub: media_kit only publishes x64 libmpv and ANGLE. An ARM64 build
 # expects both already unpacked by the build workflow (libmpv from
 # zhongfly/mpv-winbuild aarch64, ANGLE built from source for arm64) in the
 # same folders the x64 archives would be extracted to.
 if(CMAKE_GENERATOR_PLATFORM MATCHES "^[Aa][Rr][Mm]64$" OR CMAKE_VS_PLATFORM_NAME MATCHES "^[Aa][Rr][Mm]64$")
-  set(YTPLUS_ARM64 TRUE)
+  set(LUMTUB_ARM64 TRUE)
 else()
-  set(YTPLUS_ARM64 FALSE)
+  set(LUMTUB_ARM64 FALSE)
 endif()
 
-if(YTPLUS_ARM64)
+if(LUMTUB_ARM64)
   set(LIBMPV_SRC "${CMAKE_BINARY_DIR}/libmpv")
   set(ANGLE_SRC "${CMAKE_BINARY_DIR}/ANGLE")
   foreach(required
@@ -187,13 +187,13 @@ target_link_libraries(
   flutter_wrapper_plugin
 )
 
-if(YTPLUS_ARM64)
+if(LUMTUB_ARM64)
   # Only what an arm64 ANGLE D3D11 build needs, plus any DLL it depends on.
-  file(GLOB ytplus_angle_dlls "${ANGLE_SRC}/*.dll")
+  file(GLOB lumtub_angle_dlls "${ANGLE_SRC}/*.dll")
   set(
     media_kit_libs_windows_video_bundled_libraries
     "${LIBMPV_SRC}/libmpv-2.dll"
-    ${ytplus_angle_dlls}
+    ${lumtub_angle_dlls}
     PARENT_SCOPE
   )
   return()

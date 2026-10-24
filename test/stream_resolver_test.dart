@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/stream_resolver.dart';
+import 'package:lumtub/stream_resolver.dart';
 
 Map<String, dynamic> _info({int? expire}) {
   final exp = expire ?? DateTime.now().add(const Duration(hours: 6)).millisecondsSinceEpoch ~/ 1000;
@@ -62,7 +62,7 @@ void main() {
 
   test('runs yt-dlp once per video and saves the info file', () async {
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_resolve');
+    final dir = await Directory.systemTemp.createTemp('lumtub_resolve');
     addTearDown(() => dir.delete(recursive: true));
     final count = File('${dir.path}/count');
     final script = File('${dir.path}/fake-yt-dlp');
@@ -83,7 +83,7 @@ void main() {
 
   test('prefetches one video at a time, then only the last one asked for', () async {
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_resolve');
+    final dir = await Directory.systemTemp.createTemp('lumtub_resolve');
     addTearDown(() => dir.delete(recursive: true));
     final log = File('${dir.path}/log');
     final script = File('${dir.path}/fake-yt-dlp');
@@ -101,7 +101,7 @@ void main() {
 
   test('a failed resolution is not kept', () async {
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_resolve');
+    final dir = await Directory.systemTemp.createTemp('lumtub_resolve');
     addTearDown(() => dir.delete(recursive: true));
     final script = File('${dir.path}/fake-yt-dlp');
     await script.writeAsString('#!/bin/sh\necho "ERROR: Sign in to confirm" >&2\nexit 1\n');
@@ -115,7 +115,7 @@ void main() {
     expect(StreamResolver('yt-dlp', deno: r'C:\tools\deno.exe', infoDirectory: Directory('x')).arguments('dQw4w9WgXcQ', 'ytdl'),
         containsAllInOrder(['--js-runtimes', r'deno:C:\tools\deno.exe']));
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_resolve');
+    final dir = await Directory.systemTemp.createTemp('lumtub_resolve');
     addTearDown(() => dir.delete(recursive: true));
     final count = File('${dir.path}/count');
     final script = File('${dir.path}/fake-yt-dlp');
@@ -131,7 +131,7 @@ void main() {
 
   test('resolves again when the format differs from the cached one', () async {
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_resolve');
+    final dir = await Directory.systemTemp.createTemp('lumtub_resolve');
     addTearDown(() => dir.delete(recursive: true));
     final count = File('${dir.path}/count');
     final script = File('${dir.path}/fake-yt-dlp');
@@ -154,7 +154,7 @@ void main() {
 
   test('deletes the info file of a forgotten or evicted video, and of old runs', () async {
     if (Platform.isWindows) return;
-    final dir = await Directory.systemTemp.createTemp('ytplus_resolve');
+    final dir = await Directory.systemTemp.createTemp('lumtub_resolve');
     addTearDown(() => dir.delete(recursive: true));
     final script = File('${dir.path}/fake-yt-dlp');
     await script.writeAsString('#!/bin/sh\ncat <<\'JSON\'\n${jsonEncode(_info())}\nJSON\n');

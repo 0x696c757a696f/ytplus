@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/app/home_feed.dart';
-import 'package:ytplus/library_store.dart' show WatchProgress;
-import 'package:ytplus/models.dart';
-import 'package:ytplus/recommendations.dart';
-import 'package:ytplus/youtube_related.dart';
+import 'package:lumtub/app/home_feed.dart';
+import 'package:lumtub/library_store.dart' show WatchProgress;
+import 'package:lumtub/models.dart';
+import 'package:lumtub/recommendations.dart';
+import 'package:lumtub/youtube_related.dart';
 
 VideoItem video(String id, {String title = '', String channel = 'c', String? channelId, int? views, int? duration, DateTime? published}) => VideoItem(
       id: id.padRight(11, '_'),
@@ -82,7 +82,7 @@ void main() {
   });
 
   test('NotInterested is saved', () async {
-    final dir = await Directory.systemTemp.createTemp('ytplus_ni');
+    final dir = await Directory.systemTemp.createTemp('lumtub_ni');
     addTearDown(() => dir.delete(recursive: true));
     final file = File('${dir.path}/not_interested.json');
     await NotInterested(file).add(video('x', channelId: 'UCx'));

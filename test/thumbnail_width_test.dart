@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ytplus/ui/video_card.dart';
+import 'package:lumtub/ui/video_card.dart';
 
 void main() {
   test('thumbnails decode at the card size, in steps, between 160 and 480', () {

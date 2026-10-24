@@ -91,7 +91,7 @@ class DeArrow extends ChangeNotifier {
   Future<void> _fetch(String videoId) async {
     Branding found = Branding.none;
     try {
-      final response = await _client!.get(requestUri(videoId), headers: {'User-Agent': 'YTPlus-Windows/0.1'}).timeout(const Duration(seconds: 10));
+      final response = await _client!.get(requestUri(videoId), headers: {'User-Agent': 'Lumtub-Windows/0.1'}).timeout(const Duration(seconds: 10));
       // 404: no video with this prefix has submissions.
       if (response.statusCode == 200) found = parse(response.body, videoId);
     } catch (_) {

@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'app_directories.dart';
 import 'player_settings.dart';
 
-/// Manages only folders created by YTPlus. A selected parent folder is never
+/// Manages only folders created by Lumtub. A selected parent folder is never
 /// deleted or scanned as if it belonged to the application.
 class CacheManager {
   static const managedFolders = {'thumbnails', 'temp', 'yt-dlp', 'mpv'};

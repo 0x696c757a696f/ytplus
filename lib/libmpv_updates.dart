@@ -88,7 +88,7 @@ bool cpuSupportsX86_64V3() {
 /// The files shared with the Windows runner (windows/runner/libmpv_loader.cpp)
 /// that choose, confirm and roll back a downloaded libmpv-2.dll.
 class LibmpvState {
-  LibmpvState(this.directory, {String? loadedPath, this.bundled}) : loadedPath = loadedPath ?? Platform.environment['YTPLUS_LIBMPV'];
+  LibmpvState(this.directory, {String? loadedPath, this.bundled}) : loadedPath = loadedPath ?? Platform.environment['LUMTUB_LIBMPV'];
 
   /// `components/mpv`.
   final Directory directory;

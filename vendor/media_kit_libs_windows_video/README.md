@@ -12,7 +12,7 @@ Copyright © 2021 & onwards, Hitesh Kumar Saini <<saini123hitesh@gmail.com>>
 
 This project & the work under this repository is governed by MIT license that can be found in the [LICENSE](./LICENSE) file.
 
-## YTPlus
+## Lumtub
 
 Copied from pub.dev (MIT, see LICENSE). `windows/CMakeLists.txt` is changed
 for Windows ARM64: media_kit publishes only x64 libmpv and ANGLE, so an

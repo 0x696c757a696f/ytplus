@@ -20,7 +20,7 @@ class ChannelFeed {
   Future<List<VideoItem>> latest(ChannelRef channel) async {
     final missingSince = _missing[channel.id];
     if (missingSince != null && _clock().difference(missingSince) < missingFor) throw StateError(tr('频道订阅源返回 HTTP {0}', [404]));
-    final response = await _client.get(feedUri(channel), headers: {'User-Agent': 'YTPlus-Windows/0.1'}).timeout(const Duration(seconds: 20));
+    final response = await _client.get(feedUri(channel), headers: {'User-Agent': 'Lumtub-Windows/0.1'}).timeout(const Duration(seconds: 20));
     if (response.statusCode == 404) _missing[channel.id] = _clock();
     if (response.statusCode != 200) throw StateError(tr('频道订阅源返回 HTTP {0}', [response.statusCode]));
     _missing.remove(channel.id);
